@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.kamfu.entity.User;
+import com.kamfu.model.UserParam;
 import com.kamfu.mybatis.DSEnum;
 import com.kamfu.mybatis.DataSource;
 import com.kamfu.mybatis.mapper.UserMapper;
@@ -34,7 +35,10 @@ public class UserService {
     
     
     @DataSource(name = DSEnum.DATA_SOURCE_CORE)
-    public List<User> selectPagedList(Long deptId,int pageIndex) {
-    	return userMapper.selectPagedList(deptId,pageIndex);
+    public List<User> selectPagedList(Long deptId,int pageIndex,int pageSize) {
+    	UserParam param=new UserParam().setDeptId(deptId)
+    			.setStart((pageIndex-1)*pageSize)
+    			.setEnd(pageIndex*pageSize);
+    	return userMapper.selectPagedList(param);
     }
 }

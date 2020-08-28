@@ -25,7 +25,7 @@ public class UserController extends BaseController{
     @RequestMapping(value = "/list")
     @ResponseBody
     public AjaxResponse list(Long deptId,int page) {
-    	List<User> list=userService.selectPagedList(deptId, page);
+    	List<User> list=userService.selectPagedList(deptId, page,pageSize);
     	return AjaxResponse.success("成功",list);
     }
 }

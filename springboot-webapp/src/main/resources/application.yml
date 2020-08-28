@@ -30,9 +30,9 @@ spring:
           
 #mysql数据库
   datasource:
-    url: jdbc:mysql://localhost:3306/springboot?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=true
+    url: jdbc:mysql://localhost:3306/test?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=true
     username: root
-    password: 
+    password: 123456
     filters: wall,mergeStat
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource # 使用druid数据源
@@ -74,9 +74,9 @@ mybatis-plus:
 #多数据源    
 biz:    
   datasource:
-    url: jdbc:mysql://localhost:3306/cabinet?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=true
+    url: jdbc:mysql://localhost:3306/test?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=true
     username: root
-    password: 
+    password: 123456
     filters: wall,mergeStat
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource # 使用druid数据源    

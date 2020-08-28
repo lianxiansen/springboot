@@ -4,10 +4,10 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
 
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 import com.kamfu.entity.User;
+import com.kamfu.model.UserParam;
 
 /**
  * <p>
@@ -21,6 +21,5 @@ import com.kamfu.entity.User;
 public interface UserMapper extends BaseMapper<User> {
 
 	User getByUsername(String username);
-	@Select("select * from user")
-	List<User> selectPagedList(@Param("deptId") Long deptId,int pageIndex);
+	List<User> selectPagedList(@Param("param") UserParam param);
 }

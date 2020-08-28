@@ -32,10 +32,10 @@ import com.kamfu.util.HttpContext;
  * @Date 2018/7/23 涓嬪崍3:45
  */
 public class BaseController {
-
+	protected int pageSize=20;
     protected final String REDIRECT = "redirect:";
     protected final String FORWARD = "forward:";
-
+    
 
     
     protected HttpServletRequest getHttpServletRequest() {
@@ -141,4 +141,5 @@ public class BaseController {
     	User user=  (User) SecurityUtils.getSubject().getPrincipal();
     	return user;
 	}
+    
 }
