@@ -17,6 +17,7 @@ import com.kamfu.entity.User;
 import com.kamfu.model.AjaxResponse;
 import com.kamfu.service.UserService;
 import com.kamfu.util.JwtUtil;
+import com.kamfu.util.Md5Util;
 import com.kamfu.web.config.SysConfig;
 
 import lombok.extern.log4j.Log4j2;
@@ -46,18 +47,21 @@ public class LoginController extends AuthController{
      */
     @PostMapping(value = "/login")
     @ResponseBody
-    public String login(@RequestBody Map<String,String> map) {
-    	String username = map.get("username");
-        String passWord = map.get("passWord");
+    public String login(String username,String password) {
+//    	String username = map.get("username");
+//        String passWord = map.get("passWord");
         log.info("*****************************");
         //身份验证
         User user = userService.getByUsername(username);
         if (user != null) {
-            //返回token
-           String token = JwtUtil.sign(username, passWord);
-            if (token != null) {
-            	redisTemplate.opsForValue().set(token, JSON.toJSONString(user));
-                return AjaxResponse.success("成功",token).toJSONString();
+            String encryptionPassword=Md5Util.encrypt(password, user.getSalt());
+            if(encryptionPassword.equals(user.getPassword())) {
+                //返回token
+                String token = JwtUtil.sign(username, user.getId()+"");
+                 if (token != null) {
+                 	redisTemplate.opsForValue().set(token, JSON.toJSONString(user));
+                     return AjaxResponse.success("成功",token).toJSONString();
+                 }
             }
         }
         return AjaxResponse.fail().toJSONString();

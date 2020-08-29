@@ -30,9 +30,9 @@ spring:
           
 #mysql数据库
   datasource:
-    url: jdbc:mysql://localhost:3306/springboot?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=true
+    url: jdbc:mysql://localhost:3306/test?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=true
     username: root
-    password: 
+    password: 123456
     filters: wall,mergeStat
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource # 使用druid数据源
@@ -46,7 +46,7 @@ spring:
 # Redis服务器连接端口
     port: 6379
 # Redis服务器连接密码（默认为空）
-    password: 123456
+    password: 
 # 连接池最大连接数（使用负值表示没有限制）
     pool:
     max-active: 8
@@ -79,7 +79,7 @@ spring:
      
 #mybatis-plus配置     
 mybatis-plus:
-  mapper-locations: classpath*:mybatis/mapper/*.xml
+  mapper-locations: classpath*:/com/kamfu/mybatis/sql/*.xml
   type-aliases-package: com.kamfu.entity
   global-config:
     id-type: 0 #0:数据库ID自增   1:用户输入id  2:全局唯一id(IdWorker)  3:全局唯一ID(uuid)
@@ -93,9 +93,9 @@ mybatis-plus:
 #多数据源    
 biz:    
   datasource:
-    url: jdbc:mysql://localhost:3306/cabinet?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=true
+    url: jdbc:mysql://localhost:3306/test?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=true
     username: root
-    password: 
+    password: 123456
     filters: wall,mergeStat
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource # 使用druid数据源    

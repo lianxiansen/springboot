@@ -30,6 +30,7 @@ public class AuthInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         log.info("前置拦截器****");
+        String url= request.getRequestURL().toString();
         String token=request.getHeader("token");
         if(null!=token) {
         	String userJson=redisTemplate.opsForValue().get(token);

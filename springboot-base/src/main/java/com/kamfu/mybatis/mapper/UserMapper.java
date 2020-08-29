@@ -20,6 +20,6 @@ import com.kamfu.model.UserParam;
 @Mapper
 public interface UserMapper extends BaseMapper<User> {
 
-	User getByUsername(String username);
+	User getByUsername(@Param("username") String username);
 	List<User> selectPagedList(@Param("param") UserParam param);
 }

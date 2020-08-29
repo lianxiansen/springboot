@@ -22,7 +22,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
         /*要执行的拦截器*/
         registry.addInterceptor(authInterceptor).
                 addPathPatterns("/**").//拦截所有
-                excludePathPatterns("/**/login", "/**/esProductinfo/**");//过滤login
+                excludePathPatterns("/**/login", "/**/esProductinfo/**", "/**/test/**");//过滤login
     }
 
     /**

@@ -1,4 +1,6 @@
 package com.kamfu.test;
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.junit.Test;
@@ -34,14 +36,13 @@ public class ServiceTest {
 	@Resource
 	private UserService userService;
 	
-	@Autowired
-
-	private  RedisTemplate<String,  String>  redisTemplate;
+//	@Autowired
+//
+//	private  RedisTemplate<String,  String>  redisTemplate;
 	@Test
 	public void test() {
-		
-		 redisTemplate.opsForValue().set("key", "value");
-		User user=userService.getByUsername("admin");
-		System.out.println(user);
+		List<User> list=userService.selectPagedList(24L, 1, 20);
+
+		System.out.println("");
 	}
 }

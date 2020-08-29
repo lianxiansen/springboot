@@ -75,7 +75,7 @@
 <!--         order by sort ASC -->
 <!--     </select> -->
 
-    <select id="selectPagedList" resultType="com.kamfu.entity.User" parameterType="com.kamfu.model.UserParam" >
+    <select id="selectPagedList" resultMap="BaseResultMap" parameterType="com.kamfu.model.UserParam" >
         select
         <include refid="BaseColumn"/> 
         from user where 1=1
@@ -84,10 +84,10 @@
         </if>
         limit #{param.start},#{param.end}
     </select>
-    <select id="getByUsername" resultType="com.kamfu.entity.User">
+    <select id="getByUsername" resultMap="BaseResultMap" parameterType="java.lang.String">
         select
         <include refid="BaseColumn"/>
-        from user where username = #{username} 
+        from user where username = #{username} limit 1
     </select>
 
 </mapper>
