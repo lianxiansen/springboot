@@ -3,6 +3,7 @@ package com.kamfu.controller;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -17,7 +18,7 @@ import com.kamfu.service.UserService;
 public class TestController {
 	@Autowired
 	private UserService userService;
-    @PostMapping("getUser")
+	@GetMapping("getUser")
     @ResponseBody
     public AjaxResponse getUserInfo(HttpServletRequest request){
     	return AjaxResponse.success("成功",getUser());
