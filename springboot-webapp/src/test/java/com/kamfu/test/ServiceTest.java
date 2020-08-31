@@ -12,10 +12,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.kamfu.Application;
+import com.kamfu.WebAppApplication;
+import com.kamfu.mapper.PermissionMapper;
+import com.kamfu.mapper.RoleMapper;
 import com.kamfu.model.LayuiTreeNode;
-import com.kamfu.mybatis.mapper.PermissionMapper;
-import com.kamfu.mybatis.mapper.RoleMapper;
 import com.kamfu.service.DeptService;
 import com.kamfu.service.UserService;
 import com.kamfu.util.Md5Util;
@@ -26,7 +26,7 @@ import com.kamfu.util.Md5Util;
  * 测试任务
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = Application.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(classes = WebAppApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class ServiceTest {
 	private static final Logger logger = LoggerFactory.getLogger(ServiceTest.class);
 	/**

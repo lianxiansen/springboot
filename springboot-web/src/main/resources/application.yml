@@ -6,9 +6,12 @@ sys-config:
   pics-url-prefix: https://show.xncoding.net/pics/ # 图片访问URL前缀
   posapi-url-prefix: http://127.0.0.1:9095
   muti-datasource-open: true #是否开启多数据源(true/false) 
-
-  
+server:
+  port: 7000
+  max-http-header-size: 10240
 spring:
+  application:
+    name: springboot-web
 # 模板引擎
   thymeleaf:
     cache: false
@@ -79,8 +82,8 @@ spring:
      
 #mybatis-plus配置     
 mybatis-plus:
-  mapper-locations: classpath*:/com/kamfu/mybatis/sql/*.xml
-  type-aliases-package: com.kamfu.entity
+  mapper-locations: classpath*:/com/kamfu/mapper/mysql/*Mapper.xml
+  type-aliases-package: com.kamfu.base.entity
   global-config:
     id-type: 0 #0:数据库ID自增   1:用户输入id  2:全局唯一id(IdWorker)  3:全局唯一ID(uuid)
   configuration:
@@ -99,8 +102,6 @@ biz:
     filters: wall,mergeStat
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource # 使用druid数据源    
-
-
 
 #日志
 logging:
