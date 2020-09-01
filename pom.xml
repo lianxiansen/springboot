@@ -217,5 +217,6 @@
 		<module>springboot-web</module>
     	<module>springboot-webapp</module>
     	<module>eureka-server</module>
+    	<module>hystrix-dashboard</module>
 	</modules>
 </project>

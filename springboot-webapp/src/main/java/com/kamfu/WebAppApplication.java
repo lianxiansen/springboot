@@ -3,6 +3,7 @@ package com.kamfu;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -15,6 +16,7 @@ import lombok.extern.log4j.Log4j2;
 @ComponentScan(basePackages = "com.kamfu.*")
 @Log4j2
 @EnableFeignClients
+@EnableHystrix
 public class WebAppApplication {
 
 	@LoadBalanced

@@ -7,6 +7,11 @@ sys-config:
   posapi-url-prefix: http://127.0.0.1:9095
   muti-datasource-open: true #是否开启多数据源(true/false) 
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: hystrix.stream
 eureka:
   client:
     service-url:
