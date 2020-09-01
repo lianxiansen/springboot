@@ -8,24 +8,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.kamfu.entity.User;
-import com.kamfu.remote.UserRemote;
-import com.kamfu.service.UserService;
+import com.kamfu.service.WebApiService;
 
 @RestController
 @RequestMapping("/test")
 public class TestController {
 	@Autowired
-	private UserService userService;
-	@Autowired
-	UserRemote userRemote;
+	WebApiService webApiService;
 	@GetMapping("/getUser")
     @ResponseBody
     public String getUserInfo(HttpServletRequest request,String username){
-		return userRemote.getUser(username);
+		return webApiService.getUser(username);
 //    	return AjaxResponse.success("成功",getUser());
-    }
-    private User getUser() {
-    	return userService.getByUsername("admin");
     }
 }

@@ -1,23 +1,16 @@
 package com.kamfu.test;
-import java.util.List;
-
 import javax.annotation.Resource;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.kamfu.WebAppApplication;
-import com.kamfu.mapper.PermissionMapper;
-import com.kamfu.mapper.RoleMapper;
-import com.kamfu.model.LayuiTreeNode;
-import com.kamfu.service.DeptService;
-import com.kamfu.service.UserService;
+import com.kamfu.service.WebApiService;
 import com.kamfu.util.Md5Util;
 
 
@@ -34,29 +27,11 @@ public class ServiceTest {
 	 */
 	@LocalServerPort
 	private int port;
+
 	@Resource
-	private DeptService deptService;
-	@Resource
-	private UserService userService;
-	@Autowired
-	private RoleMapper roleMapper;
-	@Autowired
-	private PermissionMapper permissionMapper;
-	@Test
-	public void deptService() {
-//		Role roleEntity=roleMapper.selectById(28);
-		List<LayuiTreeNode> list = deptService.layuiTree(24L);
-//		Permission role=new Permission();
-//		role.setName("系统管理");
-//		role.setCreateTime(new Date());
-//		role.setSort(1);
-//		role.setPid(0L);
-//		role.setPids("0");
-//		int i=permissionMapper.insert(role);
-		
-		System.out.println(list);
-	}
-	
+	private WebApiService userService;
+
+
 	@Test
 	public void md5() {
 		

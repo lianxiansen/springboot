@@ -12,8 +12,6 @@ import com.kamfu.util.JwtUtil;
 
 public class AuthController {
     @Autowired
-    private UserService userService;
-    @Autowired
     private StringRedisTemplate redisTemplate;
 	@Autowired
 	private HttpServletRequest request;

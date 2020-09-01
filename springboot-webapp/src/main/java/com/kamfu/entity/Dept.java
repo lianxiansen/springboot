@@ -3,8 +3,7 @@ package com.kamfu.entity;
 import java.io.Serializable;
 import java.util.Date;
 
-import com.baomidou.mybatisplus.annotations.TableId;
-import com.baomidou.mybatisplus.enums.IdType;
+
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

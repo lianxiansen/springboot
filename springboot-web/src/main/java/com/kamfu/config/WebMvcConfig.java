@@ -20,9 +20,14 @@ public class WebMvcConfig implements WebMvcConfigurer {
         //addPa-thPatterns 用于添加拦截规则
         //excludePathPatterns 用于排除拦截
         /*要执行的拦截器*/
-        registry.addInterceptor(authInterceptor).
-                addPathPatterns("/**").//拦截所有
-                excludePathPatterns("/**/login", "/**/esProductinfo/**", "/**/test/**","/","/**/eureka/**");//过滤login
+        registry.addInterceptor(authInterceptor)
+                .addPathPatterns("/**")//拦截所有
+                .excludePathPatterns("/**/login", 
+                		"/**/esProductinfo/**", 
+                		"/**/test/**","/",
+                		"/**/eureka/**",
+                		"/**/user/**",
+                		"/**/dept/**");//过滤
     }
 
     /**

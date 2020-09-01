@@ -19,18 +19,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.kamfu.entity.Permission;
 import com.kamfu.entity.Role;
 import com.kamfu.entity.User;
-import com.kamfu.mapper.PermissionMapper;
-import com.kamfu.mapper.RoleMapper;
-import com.kamfu.service.UserService;
+import com.kamfu.service.WebApiService;
 
 public class ShiroRealm extends AuthorizingRealm
 {
-    @Autowired
-    private UserService userService;
-    @Autowired
-    private RoleMapper roleMapper;
-    @Autowired
-    private PermissionMapper permissionMapper;
+	@Autowired
+	WebApiService webApiService;
+
+
     @Override
     /**
      * 权限配置
@@ -43,7 +39,7 @@ public class ShiroRealm extends AuthorizingRealm
         //获取用户信息
         User user = (User) principals.getPrimaryPrincipal();
         //获取角色信息
-        Role role=roleMapper.selectById(user.getRoleId());
+        Role role=webApiService.getRoleById(user.getRoleId());//roleMapper.selectById(user.getRoleId());
         if(null!=role) {
         	Collection<String> roleList=new ArrayList<String>();
         	roleList.add(role.getName());
@@ -51,7 +47,7 @@ public class ShiroRealm extends AuthorizingRealm
         	
         	
         	Collection<String> permissionList=new ArrayList<String>();
-        	List<Permission> permissions=permissionMapper.selectListByRoleId(role.getId());
+        	List<Permission> permissions=webApiService.selectPermissionList(role.getId()) ;//permissionMapper.selectListByRoleId(role.getId());
         	for(Permission permission :permissions) {
         		permissionList.add(permission.getName());
         	}
@@ -99,7 +95,7 @@ public class ShiroRealm extends AuthorizingRealm
         }
  
         //获取用户信息
-        User userInfo = userService.getByUsername(username);
+        User userInfo =webApiService.getUserByUsername(username);// userService.getByUsername(username);
         if (userInfo == null)
         {
             throw new UnknownAccountException(); //未知账号

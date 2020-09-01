@@ -22,7 +22,6 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 
 import com.kamfu.entity.User;
-import com.kamfu.exception.ServiceException;
 import com.kamfu.util.HttpContext;
 
 /**
@@ -32,7 +31,7 @@ import com.kamfu.util.HttpContext;
  * @Date 2018/7/23 涓嬪崍3:45
  */
 public class BaseController {
-	protected int pageSize=20;
+	protected int pagesize=20;
     protected final String REDIRECT = "redirect:";
     protected final String FORWARD = "forward:";
     
