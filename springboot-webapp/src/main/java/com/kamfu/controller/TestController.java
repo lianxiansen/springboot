@@ -17,7 +17,7 @@ public class TestController {
 	WebApiService webApiService;
 	@GetMapping("/getUser")
     @ResponseBody
-    public String getUserInfo(HttpServletRequest request,String username){
+    public String getUser(HttpServletRequest request,String username){
 		return webApiService.getUser(username);
 //    	return AjaxResponse.success("成功",getUser());
     }

@@ -39,9 +39,9 @@ public class UserController extends AuthController{
     	return userService.getByUsername(username);
     }
 
-	@GetMapping("/selectPagedList")
+	@GetMapping("/selectUserPagedList")
     @ResponseBody
-    public List<User> selectPagedList(Long deptId,int page,int pagesize){
+    public List<User> selectUserPagedList(Long deptId,int page,int pagesize){
     	return userService.selectPagedList(deptId, page, pagesize);
     }
 
