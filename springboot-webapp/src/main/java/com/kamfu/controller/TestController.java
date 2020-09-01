@@ -4,13 +4,12 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.kamfu.entity.User;
-import com.kamfu.model.AjaxResponse;
+import com.kamfu.remote.UserRemote;
 import com.kamfu.service.UserService;
 
 @RestController
@@ -18,12 +17,15 @@ import com.kamfu.service.UserService;
 public class TestController {
 	@Autowired
 	private UserService userService;
+	@Autowired
+	UserRemote userRemote;
 	@GetMapping("/getUser")
     @ResponseBody
     public String getUserInfo(HttpServletRequest request,String username){
-    	return AjaxResponse.success("成功",getUser(username)).toJSONString();
+		return userRemote.getUser(username);
+//    	return AjaxResponse.success("成功",getUser());
     }
-    private User getUser(String username) {
-    	return userService.getByUsername(username);
+    private User getUser() {
+    	return userService.getByUsername("admin");
     }
 }

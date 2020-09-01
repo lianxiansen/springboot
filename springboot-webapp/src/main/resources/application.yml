@@ -7,8 +7,14 @@ sys-config:
   posapi-url-prefix: http://127.0.0.1:9095
   muti-datasource-open: true #是否开启多数据源(true/false) 
 
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7000/eureka/ # 指定 Eureka 注册中心的地址
   
 spring:
+  application:
+    name: springboot-webapp
 # 模板引擎
   thymeleaf:
     cache: false

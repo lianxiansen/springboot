@@ -216,5 +216,6 @@
 <!-- 		<module>springboot-base</module> -->
 		<module>springboot-web</module>
     	<module>springboot-webapp</module>
-  </modules>
+    	<module>eureka-server</module>
+	</modules>
 </project>

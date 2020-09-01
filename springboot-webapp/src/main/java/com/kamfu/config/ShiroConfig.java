@@ -34,6 +34,7 @@ public class ShiroConfig
         // 配置不需要权限的资源
         filterChainDefinitionMap.put("/static/**", "anon");
         filterChainDefinitionMap.put("/assets/**", "anon");
+        filterChainDefinitionMap.put("/test/**", "anon");
         filterChainDefinitionMap.put("/login", "anon");
         //配置退出过滤器,退出代码Shiro已经替我们实现
         //filterChainDefinitionMap.put("/logout", "logout");
