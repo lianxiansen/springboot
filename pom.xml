@@ -213,7 +213,6 @@
 		</profile>
 	</profiles>
 	<modules>
-<!-- 		<module>springboot-base</module> -->
 		<module>springboot-web</module>
     	<module>springboot-webapp</module>
     	<module>eureka-server</module>

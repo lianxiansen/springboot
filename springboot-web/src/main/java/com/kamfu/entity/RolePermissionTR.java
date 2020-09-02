@@ -2,9 +2,6 @@ package com.kamfu.entity;
 
 import java.io.Serializable;
 
-import com.baomidou.mybatisplus.annotations.TableId;
-import com.baomidou.mybatisplus.enums.IdType;
-
 /**
  * @ClassName: RoleMenuTR
  * @Description: 角色菜单关联

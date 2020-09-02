@@ -1,4 +1,4 @@
-package com.kamfu.entity;
+	package com.kamfu.entity;
 
 import java.io.Serializable;
 import java.util.ArrayList;
