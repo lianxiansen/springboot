@@ -15,7 +15,7 @@ management:
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:7000/eureka/ # 指定 Eureka 注册中心的地址
+      defaultZone: http://eureka1:7001/eureka/,http://eureka2:7002/eureka/
 feign:
   hystrix:
     enabled: true  

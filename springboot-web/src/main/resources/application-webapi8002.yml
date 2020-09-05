@@ -7,14 +7,14 @@ sys-config:
   posapi-url-prefix: http://127.0.0.1:9095
   muti-datasource-open: true #是否开启多数据源(true/false) 
 server:
-  port: 8001
+  port: 8002
   max-http-header-size: 10240
 eureka:
   client:
     service-url:
       defaultZone: http://eureka1:7001/eureka/,http://eureka2:7002/eureka/
   instance:
-    instance-id: springboot-web-8001
+    instance-id: springboot-web-8002
     prefer-ip-address:  true
 info:
   app.name: springboot-web

@@ -80,7 +80,7 @@
         <include refid="BaseColumn"/> 
         from user where 1=1
         <if test="param.deptId != null and param.deptId != ''">
-        and dept_id =#{param.deptId}
+        and dept_id in( select id from dept where id=#{param.deptId} or pids like CONCAT('%[', #{param.deptId}, ']%') )
         </if>
         limit #{param.start},#{param.end}
     </select>

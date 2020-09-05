@@ -21,6 +21,16 @@ public class DeptController extends AuthController{
 	@Autowired
 	private DeptService deptService;
 
+	
+	/**
+	 * @Title: layuiTree
+	 * @Description: 部门树形列表
+	 * @param @param deptId
+	 * @param @return 参数
+	 * @return List<LayuiTreeNode> 返回类型
+	 * @throws
+	 */
+	    
 	@GetMapping("/layuiTree")
     @ResponseBody
     public List<LayuiTreeNode> layuiTree(Long deptId){

@@ -27,7 +27,10 @@ public class WebMvcConfig implements WebMvcConfigurer {
                 		"/**/test/**","/",
                 		"/**/eureka/**",
                 		"/**/user/**",
-                		"/**/dept/**");//过滤
+                		"/**/dept/**",
+                		"/**/error/**",
+                		"/**/role/**",
+                		"/info/**");//过滤
     }
 
     /**
