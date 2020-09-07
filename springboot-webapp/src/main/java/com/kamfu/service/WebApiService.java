@@ -12,7 +12,7 @@ import com.kamfu.entity.User;
 import com.kamfu.model.AjaxResponse;
 import com.kamfu.model.LayuiTreeNode;
 
-@FeignClient(name ="springboot-web", fallback = WebApiServiceHystrix.class)
+@FeignClient(name ="api-gateway", fallback = WebApiServiceHystrix.class)
 public interface WebApiService {
     
     /**
@@ -24,9 +24,9 @@ public interface WebApiService {
      * @throws
      */
         
-    @GetMapping("/dept/layuiTree")
+    @GetMapping("/webapi/dept/layuiTree")
     List<LayuiTreeNode> layuiTree(@RequestParam(value = "deptId") Long deptId);
-    @GetMapping("/test/getUser")
+    @GetMapping("/webapi/test/getUser")
     String getUser(@RequestParam(value = "username") String username);
     
     /**
@@ -38,7 +38,7 @@ public interface WebApiService {
      * @throws
      */
         
-    @GetMapping("/user/getRoleById")
+    @GetMapping("/webapi/user/getRoleById")
     Role getRoleById(@RequestParam(value = "id") Long id);
     
     /**
@@ -50,7 +50,7 @@ public interface WebApiService {
      * @throws
      */
         
-    @GetMapping("/user/getUserByUsername")
+    @GetMapping("/webapi/user/getUserByUsername")
     User getUserByUsername(@RequestParam(value = "username") String username);
     
     /**
@@ -64,7 +64,7 @@ public interface WebApiService {
      * @throws
      */
         
-    @GetMapping("/user/selectUserPagedList")
+    @GetMapping("/webapi/user/selectUserPagedList")
     List<User> selectUserPagedList(@RequestParam(value = "deptId")Long deptId,@RequestParam(value = "page")int page,@RequestParam(value = "pagesize")int pagesize);
     
     /**
@@ -76,6 +76,9 @@ public interface WebApiService {
      * @throws
      */
         
-    @GetMapping("/user/selectPermissionList")
+    @GetMapping("/webapi/user/selectPermissionList")
     List<Permission> selectPermissionList(@RequestParam(value = "roleId")Long roleId);
+    
+//    @PostMapping(value="/baseinfo/getUserDto2")
+//    UserDto getUserDto2(@RequestBody UserDto userDto);
 }
