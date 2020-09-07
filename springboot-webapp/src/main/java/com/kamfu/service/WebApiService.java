@@ -9,8 +9,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.kamfu.entity.Permission;
 import com.kamfu.entity.Role;
 import com.kamfu.entity.User;
-import com.kamfu.model.AjaxResponse;
+import com.kamfu.model.BaseResponse;
 import com.kamfu.model.LayuiTreeNode;
+import com.kamfu.model.PagedList;
 
 @FeignClient(name ="api-gateway", fallback = WebApiServiceHystrix.class)
 public interface WebApiService {
@@ -65,7 +66,7 @@ public interface WebApiService {
      */
         
     @GetMapping("/webapi/user/selectUserPagedList")
-    List<User> selectUserPagedList(@RequestParam(value = "deptId")Long deptId,@RequestParam(value = "page")int page,@RequestParam(value = "pagesize")int pagesize);
+    PagedList<User> selectUserPagedList(@RequestParam(value = "deptId")Long deptId,@RequestParam(value = "page")int page,@RequestParam(value = "pagesize")int pagesize);
     
     /**
      * @Title: selectPermissionList

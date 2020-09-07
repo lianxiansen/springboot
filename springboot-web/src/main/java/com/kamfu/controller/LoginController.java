@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.alibaba.fastjson.JSON;
 import com.kamfu.config.SysConfig;
 import com.kamfu.entity.User;
-import com.kamfu.model.AjaxResponse;
+import com.kamfu.model.BaseResponse;
 import com.kamfu.service.UserService;
 import com.kamfu.util.JwtUtil;
 import com.kamfu.util.Md5Util;
@@ -58,15 +58,15 @@ public class LoginController extends AuthController{
                 String token = JwtUtil.sign(username, user.getId()+"");
                  if (token != null) {
                  	redisTemplate.opsForValue().set(token, JSON.toJSONString(user));
-                     return AjaxResponse.success("成功",token).toJSONString();
+                     return BaseResponse.success("成功",token).toJSONString();
                  }
             }
         }
-        return AjaxResponse.fail().toJSONString();
+        return BaseResponse.fail().toJSONString();
     }
     @PostMapping("getUser")
     @ResponseBody
     public String getUserInfo(HttpServletRequest request){
-    	return AjaxResponse.success("成功",getUser()).toJSONString();
+    	return BaseResponse.success("成功",getUser()).toJSONString();
     }
 }

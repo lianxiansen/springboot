@@ -5,7 +5,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.kamfu.model.AjaxResponse;
+import com.kamfu.entity.User;
+import com.kamfu.model.BaseResponse;
+import com.kamfu.model.PagedList;
+import com.kamfu.model.PagedResponse;
 import com.kamfu.service.WebApiService;
 
 import lombok.extern.log4j.Log4j2;
@@ -21,7 +24,8 @@ public class UserController extends BaseController{
 	private WebApiService webApiService;
     @RequestMapping(value = "/list")
     @ResponseBody
-    public AjaxResponse list(Long deptId,int page) {
-    	return AjaxResponse.success("成功",webApiService.selectUserPagedList(deptId, page, page));
+    public BaseResponse list(Long deptId,int page,int limit) {
+    	 PagedList<User> pagedList=webApiService.selectUserPagedList(deptId, page, limit);
+    	 return PagedResponse.success("成功",pagedList.getData(),pagedList.getCount());
     }
 }

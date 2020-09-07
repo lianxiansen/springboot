@@ -8,6 +8,7 @@ import com.kamfu.entity.Permission;
 import com.kamfu.entity.Role;
 import com.kamfu.entity.User;
 import com.kamfu.model.LayuiTreeNode;
+import com.kamfu.model.PagedList;
 @Component
 public class WebApiServiceHystrix implements WebApiService {
 
@@ -36,7 +37,7 @@ public class WebApiServiceHystrix implements WebApiService {
 	}
 
 	@Override
-	public List<User> selectUserPagedList(Long deptId, int page, int pagesize) {
+	public PagedList<User> selectUserPagedList(Long deptId, int page, int pagesize) {
 		// TODO Auto-generated method stub
 		return null;
 	}

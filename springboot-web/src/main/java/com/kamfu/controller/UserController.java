@@ -13,6 +13,7 @@ import com.kamfu.entity.Role;
 import com.kamfu.entity.User;
 import com.kamfu.mapper.PermissionMapper;
 import com.kamfu.mapper.RoleMapper;
+import com.kamfu.model.PagedList;
 import com.kamfu.service.UserService;
 
 import lombok.extern.log4j.Log4j2;
@@ -41,7 +42,7 @@ public class UserController extends AuthController{
 
 	@GetMapping("/selectUserPagedList")
     @ResponseBody
-    public List<User> selectUserPagedList(Long deptId,int page,int pagesize){
+    public PagedList<User> selectUserPagedList(Long deptId,int page,int pagesize){
     	return userService.selectPagedList(deptId, page, pagesize);
     }
 

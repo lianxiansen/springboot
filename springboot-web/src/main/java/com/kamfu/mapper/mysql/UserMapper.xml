@@ -90,4 +90,13 @@
         from user where username = #{username} limit 1
     </select>
 
+    <select id="selectCount" resultType="java.lang.Integer" parameterType="com.kamfu.model.UserParam" >
+        select
+       	count(0)
+        from user where 1=1
+        <if test="param.deptId != null and param.deptId != ''">
+        and dept_id in( select id from dept where id=#{param.deptId} or pids like CONCAT('%[', #{param.deptId}, ']%') )
+        </if>
+    
+    </select>
 </mapper>

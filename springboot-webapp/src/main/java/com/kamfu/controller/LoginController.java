@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.kamfu.entity.User;
-import com.kamfu.model.AjaxResponse;
+import com.kamfu.model.BaseResponse;
 
 import lombok.extern.log4j.Log4j2;
 
@@ -62,21 +62,21 @@ public class LoginController {
         try {
             subject.login(token);
         } catch (UnknownAccountException uae) {
-        	return AjaxResponse.fail("未知账户").toJSONString();
+        	return BaseResponse.fail("未知账户").toJSONString();
         } catch (IncorrectCredentialsException ice) {
-            return AjaxResponse.fail("密码不正确").toJSONString();
+            return BaseResponse.fail("密码不正确").toJSONString();
         } catch (LockedAccountException lae) {
-            return AjaxResponse.fail("账户已锁定").toJSONString();
+            return BaseResponse.fail("账户已锁定").toJSONString();
         } catch (ExcessiveAttemptsException eae) {
-            return AjaxResponse.fail("用户名或密码错误次数过多").toJSONString();
+            return BaseResponse.fail("用户名或密码错误次数过多").toJSONString();
         } catch (AuthenticationException ae) {
-            return AjaxResponse.fail("用户名或密码不正确！").toJSONString();
+            return BaseResponse.fail("用户名或密码不正确！").toJSONString();
         }
         if (subject.isAuthenticated()) {
-        	return AjaxResponse.success().toJSONString();
+        	return BaseResponse.success().toJSONString();
         } else {
             token.clear();
-            return AjaxResponse.fail().toJSONString();
+            return BaseResponse.fail().toJSONString();
         }
     }
     

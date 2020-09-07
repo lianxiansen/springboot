@@ -22,4 +22,5 @@ public interface UserMapper extends BaseMapper<User> {
 
 	User getByUsername(@Param("username") String username);
 	List<User> selectPagedList(@Param("param") UserParam param);
+	Integer selectCount(@Param("param") UserParam param);
 }

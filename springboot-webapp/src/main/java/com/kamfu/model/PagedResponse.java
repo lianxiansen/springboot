@@ -4,58 +4,33 @@ import java.util.HashMap;
 
 import com.alibaba.fastjson.JSON;
 
-public class AjaxResponse extends HashMap<String, Object>
+public class PagedResponse extends BaseResponse
 {
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -3652191725242645164L;
 
-    public static final String CODE_TAG = "code";
 
-    public static final String MSG_TAG = "msg";
+	public static final String COUNT_TAG = "count";
 
-    public static final String DATA_TAG = "data";
-
-    /**
-     * 状态类型
-     */
-    public enum Type
-    {
-        /** 成功 */
-        SUCCESS(0),
-        /**失败*/
-        FAIL(1),
-        /** 警告 */
-        WARN(301),
-        /** 错误 */
-        ERROR(500);
-        private final int value;
-
-        Type(int value)
-        {
-            this.value = value;
-        }
-
-        public int value()
-        {
-            return this.value;
-        }
-    }
 
     /** 状态类型 */
-    private Type type;
+    protected Type type;
 
     /** 状态码 */
-    private int code;
+    protected int code;
 
     /** 返回内容 */
-    private String msg;
+    protected String msg;
 
     /** 数据对象 */
-    private Object data;
+    protected Object data;
+    
+    /** 数量 */
+    private int count;
 
     /**
      * 初始化一个新创建的 AjaxResponse 对象，使其表示一个空消息。
      */
-    public AjaxResponse()
+    public PagedResponse()
     {
     }
 
@@ -65,10 +40,11 @@ public class AjaxResponse extends HashMap<String, Object>
      * @param type 状态类型
      * @param msg 返回内容
      */
-    public AjaxResponse(Type type, String msg)
+    public PagedResponse(Type type, String msg,int count)
     {
-        super.put(CODE_TAG, type.value);
-        super.put(MSG_TAG, msg);
+        super.put(BaseResponse.CODE_TAG, type.value);
+        super.put(BaseResponse.MSG_TAG, msg);
+        super.put(COUNT_TAG, count);
     }
 
     /**
@@ -78,32 +54,29 @@ public class AjaxResponse extends HashMap<String, Object>
      * @param msg 返回内容
      * @param data 数据对象
      */
-    public AjaxResponse(Type type, String msg, Object data)
+    public PagedResponse(Type type, String msg, Object data)
     {
         super.put(CODE_TAG, type.value);
         super.put(MSG_TAG, msg);
         super.put(DATA_TAG, data);
     }
-
-    /**
-     * 返回成功消息
-     * 
-     * @return 成功消息
-     */
-    public static AjaxResponse success()
+    
+    public PagedResponse(Type type, String msg, Object data,int count)
     {
-        return AjaxResponse.success("操作成功");
+        super.put(CODE_TAG, type.value);
+        super.put(MSG_TAG, msg);
+        super.put(DATA_TAG, data);
+        super.put(COUNT_TAG, count);
     }
 
     /**
      * 返回成功消息
      * 
-     * @param msg 返回内容
      * @return 成功消息
      */
-    public static AjaxResponse success(String msg)
+    public static BaseResponse success()
     {
-        return AjaxResponse.success(msg, null);
+        return PagedResponse.success("操作成功");
     }
 
     /**
@@ -113,9 +86,9 @@ public class AjaxResponse extends HashMap<String, Object>
      * @param data 数据对象
      * @return 成功消息
      */
-    public static AjaxResponse success(String msg, Object data)
+    public static PagedResponse success(String msg, Object data,int count)
     {
-        return new AjaxResponse(Type.SUCCESS, msg, data);
+        return new PagedResponse(Type.SUCCESS, msg, data,count);
     }
 
     /**
@@ -123,9 +96,9 @@ public class AjaxResponse extends HashMap<String, Object>
      *
      * @return 成功消息
      */
-    public static AjaxResponse fail()
+    public static PagedResponse fail()
     {
-        return AjaxResponse.fail("操作失败");
+        return PagedResponse.fail("操作失败");
     }
 
     /**
@@ -134,9 +107,9 @@ public class AjaxResponse extends HashMap<String, Object>
      * @param msg 返回内容
      * @return 成功消息
      */
-    public static AjaxResponse fail(String msg)
+    public static PagedResponse fail(String msg)
     {
-        return AjaxResponse.fail(msg, null);
+        return PagedResponse.fail(msg, null);
     }
     
     public String toJSONString() {
@@ -150,9 +123,9 @@ public class AjaxResponse extends HashMap<String, Object>
      * @param data 数据对象
      * @return 成功消息
      */
-    public static AjaxResponse fail(String msg, Object data)
+    public static PagedResponse fail(String msg, Object data)
     {
-        return new AjaxResponse(Type.FAIL, msg, data);
+        return new PagedResponse(Type.FAIL, msg, data);
     }
 
     /**
@@ -161,9 +134,9 @@ public class AjaxResponse extends HashMap<String, Object>
      * @param msg 返回内容
      * @return 警告消息
      */
-    public static AjaxResponse warn(String msg)
+    public static PagedResponse warn(String msg)
     {
-        return AjaxResponse.warn(msg, null);
+        return PagedResponse.warn(msg, null);
     }
 
     /**
@@ -173,9 +146,9 @@ public class AjaxResponse extends HashMap<String, Object>
      * @param data 数据对象
      * @return 警告消息
      */
-    public static AjaxResponse warn(String msg, Object data)
+    public static PagedResponse warn(String msg, Object data)
     {
-        return new AjaxResponse(Type.WARN, msg, data);
+        return new PagedResponse(Type.WARN, msg, data);
     }
 
     /**
@@ -183,9 +156,9 @@ public class AjaxResponse extends HashMap<String, Object>
      * 
      * @return
      */
-    public static AjaxResponse error()
+    public static PagedResponse error()
     {
-        return AjaxResponse.error("操作失败");
+        return PagedResponse.error("操作失败");
     }
 
     /**
@@ -194,9 +167,9 @@ public class AjaxResponse extends HashMap<String, Object>
      * @param msg 返回内容
      * @return 警告消息
      */
-    public static AjaxResponse error(String msg)
+    public static PagedResponse error(String msg)
     {
-        return AjaxResponse.error(msg, null);
+        return PagedResponse.error(msg, null);
     }
 
     /**
@@ -206,9 +179,9 @@ public class AjaxResponse extends HashMap<String, Object>
      * @param data 数据对象
      * @return 警告消息
      */
-    public static AjaxResponse error(String msg, Object data)
+    public static PagedResponse error(String msg, Object data)
     {
-        return new AjaxResponse(Type.ERROR, msg, data);
+        return new PagedResponse(Type.ERROR, msg, data);
     }
 
     public Type getType()

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.kamfu.entity.User;
 import com.kamfu.mapper.UserMapper;
+import com.kamfu.model.PagedList;
 import com.kamfu.model.UserParam;
 
 
@@ -31,10 +32,16 @@ public class UserService {
     }
     
     
-    public List<User> selectPagedList(Long deptId,int pageIndex,int pageSize) {
+    public PagedList<User> selectPagedList(Long deptId,int page,int pagesize) {
     	UserParam param=new UserParam().setDeptId(deptId)
-    			.setStart((pageIndex-1)*pageSize)
-    			.setEnd(pageIndex*pageSize);
-    	return userMapper.selectPagedList(param);
+    			.setStart((page-1)*pagesize)
+    			.setEnd(page*pagesize);
+    	List<User> list= userMapper.selectPagedList(param);
+    	int count=userMapper.selectCount(param);
+    	PagedList<User> pagedList=new PagedList<User>().setCount(count)
+    			.setData(list)
+    			.setPage(page)
+    			.setPagesize(pagesize);
+    	return pagedList;
     }
 }

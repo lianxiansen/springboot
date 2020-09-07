@@ -13,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.alibaba.fastjson.JSON;
 import com.kamfu.config.SysConfig;
-import com.kamfu.model.AjaxResponse;
+import com.kamfu.model.BaseResponse;
 import com.kamfu.service.UserService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -31,7 +31,7 @@ public class AuthInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         log.info("前置拦截器****");
         String url= request.getRequestURL().toString();
-        String token=request.getHeader("token");
+        String token=request.getParameter("token");
         if(null!=token) {
         	String userJson=redisTemplate.opsForValue().get(token);
         	User user=JSON.parseObject(userJson,User.class);
@@ -40,7 +40,7 @@ public class AuthInterceptor implements HandlerInterceptor {
         		return true;	
         	}
         }
-        response.getWriter().write(AjaxResponse.fail("no auth").toJSONString());
+        response.getWriter().write(BaseResponse.fail("no auth").toJSONString());
         return false;
     }
 
