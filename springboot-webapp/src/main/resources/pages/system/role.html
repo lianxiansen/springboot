@@ -64,21 +64,21 @@
         <div class="layui-form-item">
             <label class="layui-form-label layui-form-required">角色名:</label>
             <div class="layui-input-block">
-                <input name="roleName" placeholder="请输入角色名" class="layui-input"
+                <input name="name" placeholder="请输入角色名" class="layui-input"
                        lay-verType="tips" lay-verify="required" required/>
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label layui-form-required">角色代码:</label>
             <div class="layui-input-block">
-                <input name="roleCode" placeholder="请输入角色代码" class="layui-input"
+                <input name="code" placeholder="请输入角色代码" class="layui-input"
                        lay-verType="tips" lay-verify="required" required/>
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">备注:</label>
             <div class="layui-input-block">
-                <textarea name="comments" placeholder="请输入备注" class="layui-textarea"></textarea>
+                <textarea name="description" placeholder="请输入备注" class="layui-textarea"></textarea>
             </div>
         </div>
         <div class="layui-form-item text-right">
@@ -173,9 +173,9 @@
                     // 表单提交事件
                     form.on('submit(roleEditSubmit)', function (data) {
                         var loadIndex = layer.load(2);
-                        $.get(mData ? '../../json/ok.json' : '../../json/ok.json', data.field, function (res) {
+                        $.post(mData ? '../../json/ok.json' : '/role/add', data.field, function (res) {
                             layer.close(loadIndex);
-                            if (200 === res.code) {
+                            if (0 === res.code) {
                                 layer.close(dIndex);
                                 layer.msg(res.msg, {icon: 1});
                                 insTb.reload({page: {curr: 1}});
@@ -234,6 +234,7 @@
                     // 超出一定高度滚动
                     $(layero).children('.layui-layer-content').css({'max-height': '300px', 'overflow': 'auto'});
                 },
+                //确定按钮方法
                 yes: function (dIndex) {
                     var insTree = $.fn.zTree.getZTreeObj('roleAuthTree');
                     var checkedRows = insTree.getCheckedNodes(true);
@@ -242,15 +243,20 @@
                         ids.push(checkedRows[i].id);
                     }
                     var loadIndex = layer.load(2);
-                    $.get('../../json/ok.json', {roleId: roleId, authIds: ids.join(',')}, function (res) {
+                    $.get('/role/addPermission', {roleId: roleId, permissionIds: ids.join(',')}, function (res) {
                         layer.close(loadIndex);
-                        if (200 === res.code) {
+                        if (0 === res.code) {
                             layer.msg(res.msg, {icon: 1});
                             layer.close(dIndex);
                         } else {
                             layer.msg(res.msg, {icon: 2});
                         }
                     }, 'json');
+                },
+                end: function () {
+                    if (admin.getLayerData(layIndex, 'formOk')) {  // 判断表单操作成功标识
+                        insTb.reload();  // 成功刷新表格
+                    } 
                 }
             });
         }

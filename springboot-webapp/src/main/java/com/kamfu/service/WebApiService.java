@@ -4,15 +4,27 @@ import java.util.List;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kamfu.entity.Permission;
 import com.kamfu.entity.Role;
 import com.kamfu.entity.User;
+import com.kamfu.model.BaseResponse;
 import com.kamfu.model.LayuiTreeNode;
 import com.kamfu.model.PagedList;
 import com.kamfu.model.dto.PermissionInfo;
 
+
+/**
+ * @ClassName: WebApiService
+ * @Description: 接口服务
+ * @author liandy
+ * @date 2020年9月8日
+ *
+ */
+    
 @FeignClient(name ="api-gateway", fallback = WebApiServiceHystrix.class)
 public interface WebApiService {
     
@@ -80,13 +92,43 @@ public interface WebApiService {
     @GetMapping("/webapi/permission/selectListByRoleId")
     List<Permission> selectPermissionList(@RequestParam(value = "roleId")Long roleId);
     
+    
+    /**
+     * @Title: selectRolePagedList
+     * @Description: 获取角色列表
+     * @param @param page
+     * @param @param pagesize
+     * @param @return 参数
+     * @return PagedList<Role> 返回类型
+     * @throws
+     */
+        
     @GetMapping("/webapi/role/selectPagedList")
     PagedList<Role> selectRolePagedList(@RequestParam(value = "page")int page,@RequestParam(value = "pagesize")int pagesize);
-    @GetMapping("/webapi/permission/selectList")
-    List<Permission> selectList();
-    @GetMapping("/webapi/permission/selectAllListByRoleId")
-    List<PermissionInfo> selectAllListByRoleId(@RequestParam(value = "roleId")Long roleId);
     
-//    @PostMapping(value="/baseinfo/getUserDto2")
-//    UserDto getUserDto2(@RequestBody UserDto userDto);
+    /**
+     * @Title: selectPermissionList
+     * @Description: 获取权限列表
+     * @param @return 参数
+     * @return List<Permission> 返回类型
+     * @throws
+     */
+        
+    @GetMapping("/webapi/permission/selectList")
+    List<Permission> selectPermissionList();
+    
+    /**
+     * @Title: selectAllPermissionListByRoleId
+     * @Description: 根据角色获取权限列表（包含所有权限）
+     * @param @param roleId
+     * @param @return 参数
+     * @return List<PermissionInfo> 返回类型
+     * @throws
+     */
+        
+    @GetMapping("/webapi/permission/selectAllListByRoleId")
+    List<PermissionInfo> selectAllPermissionListByRoleId(@RequestParam(value = "roleId")Long roleId);
+    
+    @PostMapping(value="/webapi/role/add")
+    BaseResponse addRole(@RequestBody Role role);
 }

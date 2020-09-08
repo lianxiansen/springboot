@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 import com.kamfu.entity.Permission;
 import com.kamfu.entity.Role;
 import com.kamfu.entity.User;
+import com.kamfu.model.BaseResponse;
 import com.kamfu.model.LayuiTreeNode;
 import com.kamfu.model.PagedList;
 import com.kamfu.model.dto.PermissionInfo;
@@ -56,13 +57,19 @@ public class WebApiServiceHystrix implements WebApiService {
 	}
 
 	@Override
-	public List<Permission> selectList() {
+	public List<Permission> selectPermissionList() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<PermissionInfo> selectAllListByRoleId(Long roleId) {
+	public List<PermissionInfo> selectAllPermissionListByRoleId(Long roleId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public BaseResponse addRole(Role role) {
 		// TODO Auto-generated method stub
 		return null;
 	}

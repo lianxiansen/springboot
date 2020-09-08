@@ -1,12 +1,13 @@
 package com.kamfu.controller;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kamfu.entity.Role;
-import com.kamfu.entity.User;
 import com.kamfu.model.BaseResponse;
 import com.kamfu.model.PagedList;
 import com.kamfu.model.PagedResponse;
@@ -31,5 +32,20 @@ public class RoleController extends BaseController{
     public BaseResponse list(int page,int limit) {
     	 PagedList<Role> pagedList=webApiService.selectRolePagedList(page, limit);
     	 return PagedResponse.success("成功",pagedList.getData(),pagedList.getCount());
+    }
+    @RequestMapping(value = "/add")
+    @ResponseBody
+    public BaseResponse add(Role role) {
+    	role.setCreateTime(new Date());
+    	role.setCreateUser(getUser().getUserId());
+    	role.setUpdateTime(new Date());
+    	role.setUpdateUser(getUser().getUserId());
+    	return webApiService.addRole(role);
+    }
+    @RequestMapping(value = "/addPermission")
+    @ResponseBody
+    public BaseResponse addPermission(Long roleId,String permissionIds) {
+
+    	return null;
     }
 }

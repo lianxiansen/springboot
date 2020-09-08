@@ -31,12 +31,12 @@ public class PermissionController extends BaseController{
     @RequestMapping(value = "/list")
     @ResponseBody
     public BaseResponse list() {
-    	 return BaseResponse.success("成功",webApiService.selectList());
+    	 return BaseResponse.success("成功",webApiService.selectPermissionList());
     }
     
     @RequestMapping(value = "/selectAllListByRoleId")
     @ResponseBody
     public BaseResponse selectAllListByRoleId(Long roleId) {
-    	 return BaseResponse.success("成功",webApiService.selectAllListByRoleId(roleId));
+    	 return BaseResponse.success("成功",webApiService.selectAllPermissionListByRoleId(roleId));
     }
 }
