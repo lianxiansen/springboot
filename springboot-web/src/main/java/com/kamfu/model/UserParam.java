@@ -7,6 +7,6 @@ import lombok.experimental.Accessors;
 @Accessors(chain  = true)
 public class UserParam {
 	private Integer start;
-	private Integer end;
+	private Integer limit;
 	private Long deptId;
 }

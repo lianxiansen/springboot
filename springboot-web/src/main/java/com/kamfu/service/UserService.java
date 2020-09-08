@@ -35,7 +35,7 @@ public class UserService {
     public PagedList<User> selectPagedList(Long deptId,int page,int pagesize) {
     	UserParam param=new UserParam().setDeptId(deptId)
     			.setStart((page-1)*pagesize)
-    			.setEnd(page*pagesize);
+    			.setLimit(pagesize);
     	List<User> list= userMapper.selectPagedList(param);
     	int count=userMapper.selectCount(param);
     	PagedList<User> pagedList=new PagedList<User>().setCount(count)

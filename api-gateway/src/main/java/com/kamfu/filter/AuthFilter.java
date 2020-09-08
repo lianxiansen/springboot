@@ -57,6 +57,7 @@ public class AuthFilter extends ZuulFilter{
 
         RequestContext ctx = RequestContext.getCurrentContext();
         HttpServletRequest request = ctx.getRequest();
+        System.out.println(request.getRequestURI());
 //        String token =request.getHeader("token");
         String token = request.getParameter("token");
         //TODO 此处可以做日志记录

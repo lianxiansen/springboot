@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 import com.kamfu.entity.Permission;
+import com.kamfu.model.LayuiTreeNode;
 import com.kamfu.model.PermissionParam;
 
 /**
@@ -21,5 +22,6 @@ import com.kamfu.model.PermissionParam;
 public interface PermissionMapper extends BaseMapper<Permission> {
 	List<Permission> selectListByRoleId(Long roleId);
 	
-	List<Permission> selectPagedList(@Param("param") PermissionParam param);
+	List<Permission> selectList();
+	
 }

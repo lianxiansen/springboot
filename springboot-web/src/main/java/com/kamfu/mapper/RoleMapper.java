@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Param;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 import com.kamfu.entity.Role;
 import com.kamfu.model.RoleParam;
+import com.kamfu.model.UserParam;
 
 /**
  * <p>
@@ -23,5 +24,5 @@ public interface RoleMapper extends BaseMapper<Role> {
 //	Role getRoleByUserId(Long userId);
 
 	List<Role> selectPagedList(@Param("param") RoleParam param);
-	
+	Integer selectCount(@Param("param") RoleParam param);
 }

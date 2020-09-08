@@ -249,6 +249,14 @@
 <!-- js部分 -->
 <script type="text/javascript" src="../assets/libs/layui/layui.js"></script>
 <script type="text/javascript" src="../assets/js/common.js?v=318"></script>
+
+<script type="text/html" id="sexTpl">
+  {{#  if(d.sex ===0){ }}
+    <span style="color: #F581B1;">女</span>
+  {{#  } else { }}
+    男
+  {{#  } }}
+</script>
 <script> 
     layui.use(['layer', 'form', 'table', 'util', 'admin', 'tree', 'dropdown', 'xmSelect', 'treeTable'], function () {
     	
@@ -276,7 +284,7 @@
 		                {type: 'numbers',title:'序号'},
 		                {field: 'username', title: '账号', sort: true},
 		                {field: 'name', title: '用户名', sort: true},
-		                {field: 'sex', title: '性别', sort: true},
+		                {title: '性别', templet:'#sexTpl', align: 'center', width: 80, sort: true},
 		                {field: 'phone', title: '手机号', sort: true},
 		                {field: 'email', title: '邮箱', sort: true},
 		                {

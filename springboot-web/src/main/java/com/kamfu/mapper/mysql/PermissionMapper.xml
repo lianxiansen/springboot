@@ -16,7 +16,7 @@
         <result column="level" property="level" />
         <result column="status" property="status" />
         <result column="opened" property="opened" />
-        <result column="is_menu" property="is_menu" />
+        <result column="is_menu" property="isMenu" />
         <result column="create_time" property="createTime" />
         <result column="update_time" property="updateTime" />
         <result column="create_user" property="createUser" />
@@ -84,11 +84,12 @@
         	select permission_id from role_permission_tr where role_id =#{roleId}
         )
     </select>
-    <select id="selectPagedList" resultMap="BaseResultMap" parameterType="com.kamfu.model.PermissionParam" >
+    <select id="selectList" resultMap="BaseResultMap">
         select
         <include refid="BaseColumn"/> 
-        from role where 1=1
-      
-        limit #{param.start},#{param.end}
+        from permission where 1=1
+    
     </select>
+    
+
 </mapper>

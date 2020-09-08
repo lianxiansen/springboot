@@ -32,16 +32,17 @@ public class AuthInterceptor implements HandlerInterceptor {
         log.info("前置拦截器****");
         String url= request.getRequestURL().toString();
         String token=request.getParameter("token");
-        if(null!=token) {
-        	String userJson=redisTemplate.opsForValue().get(token);
-        	User user=JSON.parseObject(userJson,User.class);
-            //返回true表示通过请求，返回false表示请求被拦截
-        	if(null!=user) {
-        		return true;	
-        	}
-        }
-        response.getWriter().write(BaseResponse.fail("no auth").toJSONString());
-        return false;
+        return true;	
+//        if(null!=token) {
+//        	String userJson=redisTemplate.opsForValue().get(token);
+//        	User user=JSON.parseObject(userJson,User.class);
+//            //返回true表示通过请求，返回false表示请求被拦截
+//        	if(null!=user) {
+//        		return true;	
+//        	}
+//        }
+//        response.getWriter().write(BaseResponse.fail("no auth").toJSONString());
+//        return false;
     }
 
     @Override

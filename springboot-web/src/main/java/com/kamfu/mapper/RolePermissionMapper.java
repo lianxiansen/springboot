@@ -1,6 +1,9 @@
 	package com.kamfu.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 import com.kamfu.entity.RolePermissionTR;
@@ -15,6 +18,6 @@ import com.kamfu.entity.RolePermissionTR;
  */
 @Mapper
 public interface RolePermissionMapper extends BaseMapper<RolePermissionTR> {
-
+	List<RolePermissionTR> selectList(@Param("roleId") long roleId);
 	
 }

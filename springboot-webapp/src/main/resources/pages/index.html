@@ -69,7 +69,7 @@
     <div class="layui-side">
         <div class="layui-side-scroll">
             <ul class="layui-nav layui-nav-tree arrow2" lay-filter="admin-side-nav" lay-shrink="_all">
-            	<shiro:hasRole name="管理员"> 
+            	<shiro:hasRole name="admin"> 
                 <li class="layui-nav-item">
                     <a lay-href=""><i class="layui-icon layui-icon-home"></i>&emsp;<cite>管理员</cite></a>
                     <dl class="layui-nav-child">
@@ -84,10 +84,9 @@
                     <dl class="layui-nav-child">
                      	<dd><a lay-href="/dept/index">机构管理</a></dd>
                         <dd><a lay-href="page/system/user.html">用户管理</a></dd>
-                        <dd><a lay-href="page/system/role.html">角色管理</a></dd>
-                        <dd><a lay-href="page/system/authorities.html">权限管理</a></dd>
+                        <dd><a lay-href="/role/index">角色管理</a></dd>
+                        <dd><a lay-href="/permission/index">权限管理</a></dd>
                         <dd><a lay-href="page/system/dictionary.html">字典管理</a></dd>
-                       
                         <dd><a lay-href="page/system/login-record.html">登录日志</a></dd>
                     </dl>
                 </li>

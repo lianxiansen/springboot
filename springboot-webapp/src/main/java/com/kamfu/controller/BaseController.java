@@ -22,6 +22,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 
 import com.kamfu.entity.User;
+import com.kamfu.model.dto.UserInfo;
 import com.kamfu.util.HttpContext;
 
 /**
@@ -137,8 +138,8 @@ public class BaseController {
         return new ResponseEntity<>(resource, headers, HttpStatus.CREATED);
     }
     
-    protected User getUser() {
-    	User user=  (User) SecurityUtils.getSubject().getPrincipal();
+    protected UserInfo getUser() {
+    	UserInfo user=  (UserInfo) SecurityUtils.getSubject().getPrincipal();
     	return user;
 	}
     

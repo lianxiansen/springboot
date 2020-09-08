@@ -46,17 +46,7 @@ public class UserController extends AuthController{
     	return userService.selectPagedList(deptId, page, pagesize);
     }
 
-	@GetMapping("/selectPermissionList")
-    @ResponseBody
-	public List<Permission> selectPermissionList(Long roleId){
-		return permissionMapper.selectListByRoleId(roleId);
-	}
 	
-//	// B服务接口
-//	@PostMapping(value="/getUserDto2",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-//		public UserDto getUserDto2(@RequestBody UserDto userDto){
-//			log.info("====>>>> userDto:{}",userDto);
-//			UserDto u1 = baseInfoApi.getUserDto2(userDto);
-//			return u1;
-//		}
+	
+
 }

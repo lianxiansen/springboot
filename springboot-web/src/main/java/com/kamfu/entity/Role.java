@@ -41,12 +41,4 @@ public class Role implements Serializable {
 	
 	
 
-	
-	public Collection<String> getMenuList(){
-		Collection<String> list=new ArrayList<String>();
-		Permission menu=new Permission();
-		menu.setName("user:add");
-		list.add(menu.getName());
-		return list;
-	}
 }

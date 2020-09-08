@@ -21,6 +21,7 @@ public class BaseResponse extends HashMap<String, Object>
     {
         /** 成功 */
         SUCCESS(0),
+        /** 正常 */
         /**失败*/
         FAIL(1),
         /** 警告 */
@@ -84,6 +85,13 @@ public class BaseResponse extends HashMap<String, Object>
         super.put(MSG_TAG, msg);
         super.put(DATA_TAG, data);
     }
+    
+    public BaseResponse(int code, String msg, Object data)
+    {
+        super.put(CODE_TAG, code);
+        super.put(MSG_TAG, msg);
+        super.put(DATA_TAG, data);
+    }
 
     /**
      * 返回成功消息
@@ -117,6 +125,12 @@ public class BaseResponse extends HashMap<String, Object>
     {
         return new BaseResponse(Type.SUCCESS, msg, data);
     }
+    
+    public static BaseResponse success(int code ,String msg, Object data)
+    {
+        return new BaseResponse(code, msg, data);
+    }
+
 
     /**
      * 返回失败消息

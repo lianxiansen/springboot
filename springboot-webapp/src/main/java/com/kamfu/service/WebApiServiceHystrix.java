@@ -9,6 +9,7 @@ import com.kamfu.entity.Role;
 import com.kamfu.entity.User;
 import com.kamfu.model.LayuiTreeNode;
 import com.kamfu.model.PagedList;
+import com.kamfu.model.dto.PermissionInfo;
 @Component
 public class WebApiServiceHystrix implements WebApiService {
 
@@ -44,6 +45,24 @@ public class WebApiServiceHystrix implements WebApiService {
 
 	@Override
 	public List<Permission> selectPermissionList(Long roleId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PagedList<Role> selectRolePagedList(int page, int pagesize) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Permission> selectList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<PermissionInfo> selectAllListByRoleId(Long roleId) {
 		// TODO Auto-generated method stub
 		return null;
 	}

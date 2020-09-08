@@ -82,7 +82,7 @@
         <if test="param.deptId != null and param.deptId != ''">
         and dept_id in( select id from dept where id=#{param.deptId} or pids like CONCAT('%[', #{param.deptId}, ']%') )
         </if>
-        limit #{param.start},#{param.end}
+        limit #{param.start},#{param.limit}
     </select>
     <select id="getByUsername" resultMap="BaseResultMap" parameterType="java.lang.String">
         select

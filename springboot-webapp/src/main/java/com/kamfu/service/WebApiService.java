@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.kamfu.entity.Permission;
 import com.kamfu.entity.Role;
 import com.kamfu.entity.User;
-import com.kamfu.model.BaseResponse;
 import com.kamfu.model.LayuiTreeNode;
 import com.kamfu.model.PagedList;
+import com.kamfu.model.dto.PermissionInfo;
 
 @FeignClient(name ="api-gateway", fallback = WebApiServiceHystrix.class)
 public interface WebApiService {
@@ -77,8 +77,15 @@ public interface WebApiService {
      * @throws
      */
         
-    @GetMapping("/webapi/user/selectPermissionList")
+    @GetMapping("/webapi/permission/selectListByRoleId")
     List<Permission> selectPermissionList(@RequestParam(value = "roleId")Long roleId);
+    
+    @GetMapping("/webapi/role/selectPagedList")
+    PagedList<Role> selectRolePagedList(@RequestParam(value = "page")int page,@RequestParam(value = "pagesize")int pagesize);
+    @GetMapping("/webapi/permission/selectList")
+    List<Permission> selectList();
+    @GetMapping("/webapi/permission/selectAllListByRoleId")
+    List<PermissionInfo> selectAllListByRoleId(@RequestParam(value = "roleId")Long roleId);
     
 //    @PostMapping(value="/baseinfo/getUserDto2")
 //    UserDto getUserDto2(@RequestBody UserDto userDto);

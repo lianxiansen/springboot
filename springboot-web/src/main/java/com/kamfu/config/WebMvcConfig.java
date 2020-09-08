@@ -30,7 +30,8 @@ public class WebMvcConfig implements WebMvcConfigurer {
                 		"/**/dept/**",
                 		"/**/error/**",
                 		"/**/role/**",
-                		"/info/**");//过滤
+                		"/info/**",
+                		"/**/permission/**");//过滤
     }
 
     /**
