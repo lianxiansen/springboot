@@ -1,5 +1,6 @@
 package com.kamfu.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.kamfu.entity.Dept;
+import com.kamfu.model.BaseResponse;
 import com.kamfu.model.LayuiTreeNode;
 import com.kamfu.service.WebApiService;
 
@@ -35,5 +38,22 @@ public class DeptController extends BaseController{
     public List<LayuiTreeNode> layuiTree() {
 
     	return webApiService.layuiTree(getUser().getDeptId());
+    }
+    
+    @RequestMapping(value = "/selectList")
+    @ResponseBody
+    public BaseResponse selectList() {
+
+    	return webApiService.selectDeptList(getUser().getDeptId());
+    }
+    
+    @RequestMapping(value = "/add")
+    @ResponseBody
+    public BaseResponse add(Dept dept) {
+    	dept.setCreateTime(new Date());
+    	dept.setCreateUser(getUser().getUserId());
+    	dept.setUpdateTime(new Date());
+    	dept.setUpdateUser(getUser().getUserId());
+    	return webApiService.addDept(dept);
     }
 }

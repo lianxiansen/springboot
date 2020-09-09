@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.kamfu.entity.Dept;
 import com.kamfu.entity.Permission;
 import com.kamfu.entity.Role;
 import com.kamfu.entity.User;
@@ -36,9 +37,13 @@ public interface WebApiService {
      * @return List<LayuiTreeNode> 返回类型
      * @throws
      */
-        
+    @Deprecated
     @GetMapping("/webapi/dept/layuiTree")
     List<LayuiTreeNode> layuiTree(@RequestParam(value = "deptId") Long deptId);
+    
+    @GetMapping("/webapi/dept/selectList")
+    BaseResponse selectDeptList(@RequestParam(value = "deptId") Long deptId);
+    
     @GetMapping("/webapi/test/getUser")
     String getUser(@RequestParam(value = "username") String username);
     
@@ -134,4 +139,8 @@ public interface WebApiService {
     
     @PostMapping(value="/webapi/role/addPermissions")
     BaseResponse addPermissions(@RequestParam(value = "roleId") Long roleId,@RequestParam(value = "permissionIds") String permissionIds);
+    
+    
+    @PostMapping(value="/webapi/dept/add")
+    BaseResponse addDept(@RequestBody Dept dept);
 }

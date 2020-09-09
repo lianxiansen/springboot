@@ -71,12 +71,12 @@
 <!--         select dept_id AS tags, pid as "parentId", simple_name as text from sys_dept -->
 <!--     </select> -->
 
-    <select id="likePids" resultType="com.kamfu.entity.Dept">
+    <select id="selectList" resultType="com.kamfu.entity.Dept" parameterType="java.lang.Long">
         select
         <include refid="Base_Column_List"/>
         from dept where 1 = 1
         <if test="deptId != null and deptId != ''">
-            and pids LIKE CONCAT('%$[',#{deptId},'$]%') escape '$'
+            and (pids LIKE CONCAT('%$[',#{deptId},'$]%') escape '$' or id=#{deptId})            
         </if>
     </select>
     <select id="layuiTree" resultType="com.kamfu.model.LayuiTreeNode" parameterType="java.lang.Long">

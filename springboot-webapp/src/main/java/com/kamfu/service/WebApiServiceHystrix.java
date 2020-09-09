@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
+import com.kamfu.entity.Dept;
 import com.kamfu.entity.Permission;
 import com.kamfu.entity.Role;
 import com.kamfu.entity.User;
@@ -85,6 +86,18 @@ public class WebApiServiceHystrix implements WebApiService {
 
 	@Override
 	public BaseResponse addPermissions(Long roleId, String permissionIds) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public BaseResponse selectDeptList(Long deptId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public BaseResponse addDept(Dept dept) {
 		// TODO Auto-generated method stub
 		return null;
 	}

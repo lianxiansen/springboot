@@ -22,7 +22,7 @@ import com.kamfu.model.LayuiTreeNode;
 public interface DeptMapper extends BaseMapper<Dept> {
 
 
-    List<Dept> likePids(@Param("deptId") Long deptId);
+    List<Dept> selectList(@Param("deptId") Long deptId);
 
 	List<LayuiTreeNode> layuiTree(@Param("deptId") Long deptId);
 

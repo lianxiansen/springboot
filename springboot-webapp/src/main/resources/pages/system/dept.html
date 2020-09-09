@@ -105,42 +105,24 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label layui-form-required">机构名称:</label>
                     <div class="layui-input-block">
-                        <input name="organizationName" placeholder="请输入机构名称" class="layui-input"
+                        <input name="name" placeholder="请输入机构名称" class="layui-input"
                                lay-verType="tips" lay-verify="required" required/>
                     </div>
                 </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label layui-form-required">机构全称:</label>
-                    <div class="layui-input-block">
-                        <input name="organizationFullName" placeholder="请输入机构全称" class="layui-input"
-                               lay-verType="tips" lay-verify="required" required/>
-                    </div>
-                </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label layui-form-required">机构类型:</label>
-                    <div class="layui-input-block">
-                        <select name="organizationType" lay-verType="tips" lay-verify="required" required>
-                            <option value="">请选择机构类型</option>
-                            <option value="1">公司</option>
-                            <option value="2">子公司</option>
-                            <option value="3">部门</option>
-                            <option value="4">小组</option>
-                        </select>
-                    </div>
-                </div>
+
             </div>
             <div class="layui-col-md6">
                 <div class="layui-form-item">
                     <label class="layui-form-label layui-form-required">排序号:</label>
                     <div class="layui-input-block">
-                        <input name="sortNumber" placeholder="请输入排序号" class="layui-input" type="number"
+                        <input name="sort" placeholder="请输入排序号" class="layui-input" type="number"
                                lay-verType="tips" lay-verify="required" required/>
                     </div>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">备注:</label>
                     <div class="layui-input-block">
-                        <textarea name="comments" placeholder="请输入备注" class="layui-textarea"></textarea>
+                        <textarea name="description" placeholder="请输入备注" class="layui-textarea"></textarea>
                     </div>
                 </div>
             </div>
@@ -315,10 +297,17 @@
         /* 渲染树形 */
         function renderTree() {
         	
-            $.get('/dept/layuiTree', function (data) {
+            $.get('/dept/selectList', function (res) {
+                for (var i = 0; i < res.data.length; i++) {
+                    res.data[i].title = res.data[i].name;
+                    res.data[i].id = res.data[i].id;
+                    res.data[i].spread = true;
+                }
+                treeData = layui.treeTable.pidToChildren(res.data, 'id', 'pid');
                 tree.render({
                     elem: '#organizationTree',
-                    data: data,
+                    onlyIconControl: true,
+                    data: treeData,
                     click: function(obj){
                     	console.info(obj.data);
                         selObj = obj;
@@ -340,7 +329,7 @@
 
         /* 添加 */
         $('#organizationAddBtn').click(function () {
-            showEditModel(null, selObj ? selObj.data.parentId : null);
+            showEditModel(null, selObj ? selObj.data.pid : null);
         });
 
         /* 修改 */
@@ -367,11 +356,11 @@
                     form.val('organizationEditForm', mData);
                     // 表单提交事件
                     form.on('submit(organizationEditSubmit)', function (data) {
-                        data.field.parentId = insXmSel.getValue('valueStr');
+                        data.field.pid = insXmSel.getValue('valueStr');
                         var loadIndex = layer.load(2);
-                        $.get(mData ? '../../json/ok.json' : '../../json/ok.json', data.field, function (res) {
+                        $.get(mData ? '../../json/ok.json' : '/dept/add', data.field, function (res) {
                             layer.close(loadIndex);
-                            if (200 === res.code) {
+                            if (0 === res.code) {
                                 layer.close(dIndex);
                                 layer.msg(res.msg, {icon: 1});
                                 renderTree();
@@ -386,11 +375,11 @@
                         el: '#organizationEditParentSel',
                         height: '250px',
                         data: treeData,
-                        initValue: mData ? [mData.parentId] : (pid ? [pid] : []),
+                        initValue: mData ? [mData.pid] : (pid ? [pid] : []),
                         model: {label: {type: 'text'}},
                         prop: {
-                            name: 'organizationName',
-                            value: 'organizationId'
+                            name: 'name',
+                            value: 'id'
                         },
                         radio: true,
                         clickClose: true,
