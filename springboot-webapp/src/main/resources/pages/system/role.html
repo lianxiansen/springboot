@@ -243,7 +243,7 @@
                         ids.push(checkedRows[i].id);
                     }
                     var loadIndex = layer.load(2);
-                    $.get('/role/addPermission', {roleId: roleId, permissionIds: ids.join(',')}, function (res) {
+                    $.get('/role/addPermissions', {roleId: roleId, permissionIds: ids.join(',')}, function (res) {
                         layer.close(loadIndex);
                         if (0 === res.code) {
                             layer.msg(res.msg, {icon: 1});

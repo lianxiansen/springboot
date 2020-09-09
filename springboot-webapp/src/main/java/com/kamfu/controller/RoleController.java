@@ -42,10 +42,10 @@ public class RoleController extends BaseController{
     	role.setUpdateUser(getUser().getUserId());
     	return webApiService.addRole(role);
     }
-    @RequestMapping(value = "/addPermission")
+    @RequestMapping(value = "/addPermissions")
     @ResponseBody
-    public BaseResponse addPermission(Long roleId,String permissionIds) {
+    public BaseResponse addPermissions(Long roleId,String permissionIds) {
 
-    	return null;
+    	return webApiService.addPermissions(roleId, permissionIds);
     }
 }

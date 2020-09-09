@@ -1,7 +1,5 @@
 package com.kamfu.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,10 +8,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.kamfu.entity.Permission;
 import com.kamfu.entity.Role;
 import com.kamfu.mapper.PermissionMapper;
 import com.kamfu.mapper.RoleMapper;
+import com.kamfu.mapper.RolePermissionMapper;
 import com.kamfu.model.BaseResponse;
 import com.kamfu.model.PagedList;
 import com.kamfu.service.RoleService;
@@ -30,7 +28,8 @@ public class RoleController extends AuthController{
 	
     @Autowired
     private RoleService roleService;
-
+    @Autowired
+    private RolePermissionMapper rolePermissionMapper;
 
 	@GetMapping("/selectPagedList")
     @ResponseBody
@@ -49,6 +48,16 @@ public class RoleController extends AuthController{
 		}
 	}
 
-	
+	@RequestMapping(value="/addPermissions",method = RequestMethod.POST)
+    @ResponseBody
+	public BaseResponse addPermissions(Long roleId,String permissionIds){
+		try {
+			roleService.addPermissions(roleId, permissionIds);
+			return BaseResponse.success();
+		}catch(Exception e) {
+			log.error(e.getMessage());
+			return BaseResponse.fail();
+		}
+	}
 
 }

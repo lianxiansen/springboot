@@ -11,6 +11,15 @@ import com.kamfu.model.BaseResponse;
 import com.kamfu.model.LayuiTreeNode;
 import com.kamfu.model.PagedList;
 import com.kamfu.model.dto.PermissionInfo;
+
+/**
+ * @ClassName: WebApiServiceHystrix
+ * @Description: 服务降级
+ * @author liandy
+ * @date 2020年9月9日
+ *
+ */
+    
 @Component
 public class WebApiServiceHystrix implements WebApiService {
 
@@ -70,6 +79,12 @@ public class WebApiServiceHystrix implements WebApiService {
 
 	@Override
 	public BaseResponse addRole(Role role) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public BaseResponse addPermissions(Long roleId, String permissionIds) {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -3,6 +3,8 @@ package com.kamfu.entity;
 import java.io.Serializable;
 import java.util.Date;
 
+import com.baomidou.mybatisplus.annotations.TableName;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
@@ -17,6 +19,7 @@ import lombok.experimental.Accessors;
 @NoArgsConstructor
 @Data
 @Accessors(chain=true)
+@TableName(value = "role_permission_tr")
 public class RolePermissionTR implements Serializable {
 
     private static final long serialVersionUID = 1L;

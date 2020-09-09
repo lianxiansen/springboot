@@ -131,4 +131,7 @@ public interface WebApiService {
     
     @PostMapping(value="/webapi/role/add")
     BaseResponse addRole(@RequestBody Role role);
+    
+    @PostMapping(value="/webapi/role/addPermissions")
+    BaseResponse addPermissions(@RequestParam(value = "roleId") Long roleId,@RequestParam(value = "permissionIds") String permissionIds);
 }
