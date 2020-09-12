@@ -80,13 +80,18 @@ spring:
       naming:
         implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl #指定jpa的自动表生成策略，驼峰自动映射为下划线格式
         #physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl    
-
+#spring.klock.address 和 spring.klock.cluster-server.node-addresses 选其一即可        
+  klock:
+    address: 127.0.0.1:6379
+    database: 15
+    waitTime: 60
+    leaseTime: 60
 #mybatis   
 #mybatis:
 #  type-aliases-package: com.kamfu.entity
 #  config-location: classpath:mybatis/mybatis-config.xml
 #  mapper-locations: classpath:mybatis/mapper/*.xml
-
+  
 
   
      
@@ -115,5 +120,6 @@ biz:
 
 #日志
 logging:
-  config: classpath:log4j2.xml     
+  config: classpath:log4j2.xml
+  
   
