@@ -102,4 +102,16 @@ public class WebApiServiceHystrix implements WebApiService {
 		return null;
 	}
 
+	@Override
+	public List<Role> selectRoleList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public BaseResponse addUser(User user) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

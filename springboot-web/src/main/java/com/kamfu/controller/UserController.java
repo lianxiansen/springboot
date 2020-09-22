@@ -5,14 +5,18 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.kamfu.entity.Dept;
 import com.kamfu.entity.Permission;
 import com.kamfu.entity.Role;
 import com.kamfu.entity.User;
 import com.kamfu.mapper.PermissionMapper;
 import com.kamfu.mapper.RoleMapper;
+import com.kamfu.model.BaseResponse;
 import com.kamfu.model.PagedList;
 import com.kamfu.service.UserService;
 
@@ -46,7 +50,16 @@ public class UserController extends AuthController{
     	return userService.selectPagedList(deptId, page, pagesize);
     }
 
-	
+	@RequestMapping(value = "/add",method = RequestMethod.POST)
+	@ResponseBody
+	public BaseResponse add(@RequestBody User user) {
+		try {
+			userService.add(user);
+			return BaseResponse.success(); 
+		}catch(Exception e) {
+			return BaseResponse.fail(e.getMessage());
+		}
+	}
 	
 
 }

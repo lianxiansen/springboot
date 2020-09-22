@@ -1,5 +1,7 @@
 package com.kamfu.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,6 +37,12 @@ public class RoleController extends AuthController{
     @ResponseBody
     public PagedList<Role> selectPagedList(int page,int pagesize){
     	return roleService.selectPagedList(page, pagesize);
+    }
+	
+	@GetMapping("/selectList")
+    @ResponseBody
+    public List<Role> selectList(){
+    	return roleService.selectList();
     }
 	@RequestMapping(value = "/add",method = RequestMethod.POST)
 	@ResponseBody

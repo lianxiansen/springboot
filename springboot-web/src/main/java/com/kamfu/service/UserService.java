@@ -10,6 +10,8 @@ import com.kamfu.entity.User;
 import com.kamfu.mapper.UserMapper;
 import com.kamfu.model.PagedList;
 import com.kamfu.model.UserParam;
+import com.kamfu.util.Md5Util;
+import com.kamfu.util.StringUtil;
 
 
 /**
@@ -43,5 +45,15 @@ public class UserService {
     			.setPage(page)
     			.setPagesize(pagesize);
     	return pagedList;
+    }
+    
+    public void add(User user) {
+    	if(StringUtil.isNotEmpty(user.getPassword())) {
+    		  String salt = Md5Util.getRandomSalt();
+    		  String encryptionPassword=Md5Util.encrypt(user.getPassword(), salt);
+    		  user.setSalt(salt);
+    		  user.setPassword(encryptionPassword);
+    		  userMapper.insert(user);
+    	}
     }
 }

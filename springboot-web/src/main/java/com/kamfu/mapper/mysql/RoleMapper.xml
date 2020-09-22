@@ -29,7 +29,11 @@
         from role where 1=1
         limit #{param.start},#{param.end}
     </select>
-    
+    <select id="selectList" resultMap="BaseResultMap" >
+        select
+        <include refid="BaseColumn"/> 
+        from role where 1=1
+    </select>
     <select id="selectCount" resultType="java.lang.Integer" parameterType="com.kamfu.model.RoleParam" >
         select
         count(0)

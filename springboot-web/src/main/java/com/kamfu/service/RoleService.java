@@ -40,6 +40,11 @@ public class RoleService {
     			.setPagesize(pagesize);
     	return pagedList;
     }
+    
+    public List<Role> selectList() {
+    	List<Role> list= roleMapper.selectList();
+    	return list;
+    }
     @Transactional
     public void addPermissions(Long roleId,String permissionIds) {
     	rolePermissionMapper.delete(new EntityWrapper<RolePermissionTR>().eq("role_id", roleId));

@@ -22,7 +22,7 @@ import com.kamfu.model.UserParam;
 public interface RoleMapper extends BaseMapper<Role> {
 
 //	Role getRoleByUserId(Long userId);
-
+	List<Role> selectList();
 	List<Role> selectPagedList(@Param("param") RoleParam param);
 	Integer selectCount(@Param("param") RoleParam param);
 }

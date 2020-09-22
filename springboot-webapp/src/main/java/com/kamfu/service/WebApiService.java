@@ -47,6 +47,8 @@ public interface WebApiService {
     @GetMapping("/webapi/test/getUser")
     String getUser(@RequestParam(value = "username") String username);
     
+    @PostMapping(value="/webapi/user/add")
+    BaseResponse addUser(@RequestBody User user);
     /**
      * @Title: getRoleById
      * @Description: 根据id获取角色
@@ -111,6 +113,9 @@ public interface WebApiService {
     @GetMapping("/webapi/role/selectPagedList")
     PagedList<Role> selectRolePagedList(@RequestParam(value = "page")int page,@RequestParam(value = "pagesize")int pagesize);
     
+    @GetMapping("/webapi/role/selectList")
+    List<Role> selectRoleList();
+    
     /**
      * @Title: selectPermissionList
      * @Description: 获取权限列表
@@ -143,4 +148,6 @@ public interface WebApiService {
     
     @PostMapping(value="/webapi/dept/add")
     BaseResponse addDept(@RequestBody Dept dept);
+    
+    
 }
