@@ -23,21 +23,18 @@
         create_time AS "createTime", update_time AS "updateTime", create_user AS "createUser", update_user AS "updateUser"
     </sql>
 
+
     <select id="selectPagedList" resultMap="BaseResultMap" parameterType="com.kamfu.model.RoleParam" >
         select
         <include refid="BaseColumn"/> 
         from role where 1=1
-        limit #{param.start},#{param.end}
-    </select>
-    <select id="selectList" resultMap="BaseResultMap" >
-        select
-        <include refid="BaseColumn"/> 
-        from role where 1=1
+
+        limit #{param.start},#{param.limit}
     </select>
     <select id="selectCount" resultType="java.lang.Integer" parameterType="com.kamfu.model.RoleParam" >
         select
         count(0)
         from role where 1=1
-        limit #{param.start},#{param.end}
+
     </select>
 </mapper>

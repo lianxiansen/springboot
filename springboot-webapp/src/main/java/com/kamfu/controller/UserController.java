@@ -21,14 +21,20 @@ import lombok.extern.log4j.Log4j2;
 @Log4j2
 @RequestMapping("/user")
 public class UserController extends BaseController{
-	private String PREFIX = "user/";
-	
+	private String PREFIX = "system/";
+    @RequestMapping("index")
+    public String index() {
+        return PREFIX + "user.html";
+    }
 
 	@Autowired
 	private WebApiService webApiService;
-    @RequestMapping(value = "/list")
+    @RequestMapping(value = "/pagedList")
     @ResponseBody
-    public BaseResponse list(Long deptId,int page,int limit) {
+    public BaseResponse pagedList(Long deptId,int page,int limit) {
+    	if(null==deptId) {
+    		deptId=getUser().getDeptId();
+    	}
     	 PagedList<User> pagedList=webApiService.selectUserPagedList(deptId, page, limit);
     	 return PagedResponse.success("成功",pagedList.getData(),pagedList.getCount());
     }

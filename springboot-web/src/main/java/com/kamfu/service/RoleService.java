@@ -30,7 +30,7 @@ public class RoleService {
     public PagedList<Role> selectPagedList(int page,int pagesize) {
     	RoleParam param=new RoleParam()
     			.setStart((page-1)*pagesize)
-    			.setEnd(page*pagesize);
+    			.setLimit(pagesize);
     	List<Role> list= roleMapper.selectPagedList(param);
     	
     	int count=roleMapper.selectCount(param);
@@ -41,10 +41,7 @@ public class RoleService {
     	return pagedList;
     }
     
-    public List<Role> selectList() {
-    	List<Role> list= roleMapper.selectList();
-    	return list;
-    }
+
     @Transactional
     public void addPermissions(Long roleId,String permissionIds) {
     	rolePermissionMapper.delete(new EntityWrapper<RolePermissionTR>().eq("role_id", roleId));

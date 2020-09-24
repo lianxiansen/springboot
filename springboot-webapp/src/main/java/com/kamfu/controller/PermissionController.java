@@ -34,9 +34,9 @@ public class PermissionController extends BaseController{
     	 return BaseResponse.success("成功",webApiService.selectPermissionList());
     }
     
-    @RequestMapping(value = "/selectAllListByRoleId")
+    @RequestMapping(value = "/selectTreeListByRoleId")
     @ResponseBody
-    public BaseResponse selectAllListByRoleId(Long roleId) {
-    	 return BaseResponse.success("成功",webApiService.selectAllPermissionListByRoleId(roleId));
+    public BaseResponse selectTreeListByRoleId(Long roleId) {
+    	 return BaseResponse.success("成功",webApiService.selectPermissionTreeListByRoleId(roleId,getUser().getRole().getId()));
     }
 }

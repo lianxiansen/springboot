@@ -60,11 +60,7 @@ public class WebApiServiceHystrix implements WebApiService {
 		return null;
 	}
 
-	@Override
-	public PagedList<Role> selectRolePagedList(int page, int pagesize) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 
 	@Override
 	public List<Permission> selectPermissionList() {
@@ -72,11 +68,7 @@ public class WebApiServiceHystrix implements WebApiService {
 		return null;
 	}
 
-	@Override
-	public List<PermissionInfo> selectAllPermissionListByRoleId(Long roleId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 
 	@Override
 	public BaseResponse addRole(Role role) {
@@ -102,16 +94,27 @@ public class WebApiServiceHystrix implements WebApiService {
 		return null;
 	}
 
-	@Override
-	public List<Role> selectRoleList() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 
 	@Override
 	public BaseResponse addUser(User user) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
+
+	@Override
+	public PagedList<Role> selectRolePagedList(int page, int pagesize) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<PermissionInfo> selectPermissionTreeListByRoleId(Long roleIdChoose, Long roleIdMe) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 }

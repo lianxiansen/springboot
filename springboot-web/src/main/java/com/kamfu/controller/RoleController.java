@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kamfu.entity.Role;
+import com.kamfu.mapper.DeptMapper;
 import com.kamfu.mapper.PermissionMapper;
 import com.kamfu.mapper.RoleMapper;
 import com.kamfu.mapper.RolePermissionMapper;
@@ -32,6 +33,8 @@ public class RoleController extends AuthController{
     private RoleService roleService;
     @Autowired
     private RolePermissionMapper rolePermissionMapper;
+    @Autowired
+    private DeptMapper deptMapper;
 
 	@GetMapping("/selectPagedList")
     @ResponseBody
@@ -39,11 +42,7 @@ public class RoleController extends AuthController{
     	return roleService.selectPagedList(page, pagesize);
     }
 	
-	@GetMapping("/selectList")
-    @ResponseBody
-    public List<Role> selectList(){
-    	return roleService.selectList();
-    }
+
 	@RequestMapping(value = "/add",method = RequestMethod.POST)
 	@ResponseBody
 	public BaseResponse add(@RequestBody Role role) {

@@ -79,6 +79,16 @@
             and (pids LIKE CONCAT('%$[',#{deptId},'$]%') escape '$' or id=#{deptId})            
         </if>
     </select>
+    
+    <select id="selectIdList" resultType="java.lang.Long" parameterType="java.lang.Long">
+        select
+        id
+        from dept where 1 = 1
+        <if test="deptId != null and deptId != ''">
+            and (pids LIKE CONCAT('%$[',#{deptId},'$]%') escape '$' or id=#{deptId})            
+        </if>
+    </select>
+    
     <select id="layuiTree" resultType="com.kamfu.model.LayuiTreeNode" parameterType="java.lang.Long">
 		select id AS id, pid as "pid", name as title,
 		(

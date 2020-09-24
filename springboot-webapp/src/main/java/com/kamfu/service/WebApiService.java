@@ -99,7 +99,17 @@ public interface WebApiService {
     @GetMapping("/webapi/permission/selectListByRoleId")
     List<Permission> selectPermissionList(@RequestParam(value = "roleId")Long roleId);
     
-    
+    /**
+     * @Title: selectAllPermissionListByRoleId
+     * @Description: 根据角色获取权限列表（包含所有权限）
+     * @param @param roleId
+     * @param @return 参数
+     * @return List<PermissionInfo> 返回类型
+     * @throws
+     */
+        
+    @GetMapping("/webapi/permission/selectTreeListByRoleId")
+    List<PermissionInfo> selectPermissionTreeListByRoleId(@RequestParam(value = "roleIdChoose")Long roleIdChoose,@RequestParam(value = "roleIdMe")Long roleIdMe);
     /**
      * @Title: selectRolePagedList
      * @Description: 获取角色列表
@@ -113,8 +123,7 @@ public interface WebApiService {
     @GetMapping("/webapi/role/selectPagedList")
     PagedList<Role> selectRolePagedList(@RequestParam(value = "page")int page,@RequestParam(value = "pagesize")int pagesize);
     
-    @GetMapping("/webapi/role/selectList")
-    List<Role> selectRoleList();
+
     
     /**
      * @Title: selectPermissionList
@@ -127,17 +136,7 @@ public interface WebApiService {
     @GetMapping("/webapi/permission/selectList")
     List<Permission> selectPermissionList();
     
-    /**
-     * @Title: selectAllPermissionListByRoleId
-     * @Description: 根据角色获取权限列表（包含所有权限）
-     * @param @param roleId
-     * @param @return 参数
-     * @return List<PermissionInfo> 返回类型
-     * @throws
-     */
-        
-    @GetMapping("/webapi/permission/selectAllListByRoleId")
-    List<PermissionInfo> selectAllPermissionListByRoleId(@RequestParam(value = "roleId")Long roleId);
+
     
     @PostMapping(value="/webapi/role/add")
     BaseResponse addRole(@RequestBody Role role);

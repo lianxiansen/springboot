@@ -3,6 +3,8 @@ package com.kamfu.controller;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.shiro.authz.annotation.Logical;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,25 +27,21 @@ public class RoleController extends BaseController{
     public String index() {
         return PREFIX + "role.html";
     }
-	
+    
 	@Autowired
 	private WebApiService webApiService;
     @RequestMapping(value = "/pagedList")
     @ResponseBody
-    public BaseResponse list(int page,int limit) {
+    public BaseResponse pagedList(int page,int limit) {
     	 PagedList<Role> pagedList=webApiService.selectRolePagedList(page, limit);
     	 return PagedResponse.success("成功",pagedList.getData(),pagedList.getCount());
     }
     
-    @RequestMapping(value = "/list")
-    @ResponseBody
-    public BaseResponse list() {
-    	 List<Role> list=webApiService.selectRoleList();
-    	 return BaseResponse.success("成功",list);
-    }
+
     
     @RequestMapping(value = "/add")
     @ResponseBody
+    @RequiresPermissions(value={"role","role_add"}, logical= Logical.AND)
     public BaseResponse add(Role role) {
     	role.setCreateTime(new Date());
     	role.setCreateUser(getUser().getUserId());

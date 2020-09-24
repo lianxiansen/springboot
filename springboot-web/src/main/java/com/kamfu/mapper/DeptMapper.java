@@ -23,7 +23,7 @@ public interface DeptMapper extends BaseMapper<Dept> {
 
 
     List<Dept> selectList(@Param("deptId") Long deptId);
-
+    List<Long> selectIdList(@Param("deptId") Long deptId);
 	List<LayuiTreeNode> layuiTree(@Param("deptId") Long deptId);
 
 }

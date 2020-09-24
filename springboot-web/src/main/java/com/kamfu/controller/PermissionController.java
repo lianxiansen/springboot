@@ -34,10 +34,10 @@ public class PermissionController extends AuthController{
 	public List<Permission> selectListByRoleId(Long roleId){
 		return permissionMapper.selectListByRoleId(roleId);
 	}
-	@GetMapping("/selectAllListByRoleId")
+	@GetMapping("/selectTreeListByRoleId")
     @ResponseBody
-	public List<PermissionInfo> selectAllListByRoleId(Long roleId){
-		return permissionService.selectAllListByRoleId(roleId);
+	public List<PermissionInfo> selectTreeListByRoleId(Long roleIdChoose,Long roleIdMe){
+		return permissionService.selectTreeListByRoleId(roleIdChoose,roleIdMe);
 	}
 
 }
