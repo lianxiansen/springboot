@@ -79,17 +79,19 @@
                     </dl>
                 </li>
                 </shiro:hasRole>
+                <shiro:hasPermission="sys">
                 <li class="layui-nav-item">
                     <a><i class="layui-icon layui-icon-heart"></i>&emsp;<cite>系统管理</cite></a>
                     <dl class="layui-nav-child">
-                     	<dd><a lay-href="/dept/index">机构管理</a></dd>
-                        <dd><a lay-href="/role/index">角色管理</a></dd>
-                        <dd><a lay-href="/permission/index">权限管理</a></dd>
-                        <dd><a lay-href="/user/index">用户管理</a></dd>
+                     	<dd shiro:hasPermission="dept"><a lay-href="/dept/index">机构管理</a></dd>
+                        <dd shiro:hasPermission="role"><a lay-href="/role/index">角色管理</a></dd>
+                        <dd shiro:hasPermission="permission"><a lay-href="/permission/index">权限管理</a></dd>
+                        <dd shiro:hasPermission="user"><a lay-href="/user/index">用户管理</a></dd>
                         <dd><a lay-href="page/system/dictionary.html">字典管理</a></dd>
                         <dd><a lay-href="page/system/login-record.html">登录日志</a></dd>
                     </dl>
                 </li>
+                </shiro:hasPermission>
                 <li class="layui-nav-item">
                     <a><i class="layui-icon layui-icon-template"></i>&emsp;<cite>模板页面</cite></a>
                     <dl class="layui-nav-child">

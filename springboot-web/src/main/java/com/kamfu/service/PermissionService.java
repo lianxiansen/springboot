@@ -6,14 +6,19 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import com.kamfu.entity.Dept;
 import com.kamfu.entity.Permission;
 import com.kamfu.entity.Role;
 import com.kamfu.entity.RolePermissionTR;
+import com.kamfu.entity.User;
 import com.kamfu.mapper.PermissionMapper;
 import com.kamfu.mapper.RoleMapper;
 import com.kamfu.mapper.RolePermissionMapper;
 import com.kamfu.model.PermissionInfo;
+import com.kamfu.util.Md5Util;
+import com.kamfu.util.StringUtil;
 
 
 
@@ -70,5 +75,46 @@ public class PermissionService {
     	
 
     	return result;
+    }
+    
+    @Transactional
+    public void add(Permission entity) throws Exception {
+    	if(null!=entity.getPid()&&entity.getPid()>0) {
+    		Permission parent=permissionMapper.selectById(entity.getPid());
+    		if(null!=parent) {
+    			entity.setPids(parent.getPids()+"["+entity.getPid()+"]");
+    			
+    		}else {
+    			throw new Exception("上级不存在");
+    		}
+    	}else {
+    		entity.setPid(0L);
+    		entity.setPids("["+0+"]");
+    	}
+    	permissionMapper.insert(entity);
+    	Role role=new Role();
+    	role.setCode("admin");
+    	Role admin=roleMapper.selectOne(role);
+		RolePermissionTR rolePermissionTR=new RolePermissionTR();
+		rolePermissionTR.setPermissionId(Long.valueOf(entity.getId()));
+		rolePermissionTR.setRoleId(admin.getId());
+		rolePermissionMapper.insert(rolePermissionTR);
+    }
+    
+    
+    public void edit(Permission entity) throws Exception {
+    	if(null!=entity.getPid()&&entity.getPid()>0) {
+    		Permission parent=permissionMapper.selectById(entity.getPid());
+    		if(null!=parent) {
+    			entity.setPids(parent.getPids()+"["+entity.getPid()+"]");
+    	
+    		}else {
+    			throw new Exception("上级不存在");
+    		}
+    	}else {
+    		entity.setPid(0L);
+    		entity.setPids("["+0+"]");
+    	}
+		permissionMapper.updateById(entity);
     }
 }

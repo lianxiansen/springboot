@@ -99,6 +99,12 @@ public interface WebApiService {
     @GetMapping("/webapi/permission/selectListByRoleId")
     List<Permission> selectPermissionList(@RequestParam(value = "roleId")Long roleId);
     
+    
+    @PostMapping(value="/webapi/permission/add")
+    BaseResponse addPermission(@RequestBody Permission permission);
+    
+    @PostMapping(value="/webapi/permission/edit")
+    BaseResponse editPermission(@RequestBody Permission permission);
     /**
      * @Title: selectAllPermissionListByRoleId
      * @Description: 根据角色获取权限列表（包含所有权限）

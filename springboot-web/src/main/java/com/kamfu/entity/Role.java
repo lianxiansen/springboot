@@ -27,9 +27,9 @@ public class Role implements Serializable {
 	private String code;
 	private String name;
 	private String description;
-	private int sort;
-	private long createUser;
-	private long updateUser;
+	private Integer sort;
+	private Long createUser;
+	private Long updateUser;
     /**
      * 创建时间
      */

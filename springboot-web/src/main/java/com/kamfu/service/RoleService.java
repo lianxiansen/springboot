@@ -54,6 +54,5 @@ public class RoleService {
         		rolePermissionMapper.insert(entity);
         	}
     	}
-
     }
 }

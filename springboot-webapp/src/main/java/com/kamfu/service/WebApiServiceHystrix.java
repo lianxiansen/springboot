@@ -116,5 +116,17 @@ public class WebApiServiceHystrix implements WebApiService {
 		return null;
 	}
 
+	@Override
+	public BaseResponse addPermission(Permission permission) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public BaseResponse editPermission(Permission permission) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 }
