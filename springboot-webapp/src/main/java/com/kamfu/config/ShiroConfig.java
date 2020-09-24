@@ -35,6 +35,7 @@ public class ShiroConfig
         filterChainDefinitionMap.put("/static/**", "anon");
         filterChainDefinitionMap.put("/assets/**", "anon");
         filterChainDefinitionMap.put("/test/**", "anon");
+        filterChainDefinitionMap.put("/home/**", "anon");
         filterChainDefinitionMap.put("/login", "anon");
         filterChainDefinitionMap.put("/actuator/**", "anon");
         //配置退出过滤器,退出代码Shiro已经替我们实现

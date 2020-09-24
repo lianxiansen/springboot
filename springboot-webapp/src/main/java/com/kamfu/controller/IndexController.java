@@ -24,4 +24,9 @@ public class IndexController extends BaseController{
 		UserInfo user =getUser();
         return "index";
     }
+	
+	@RequestMapping({"/home"})
+    public String home() {
+        return "home";
+    }
 }
