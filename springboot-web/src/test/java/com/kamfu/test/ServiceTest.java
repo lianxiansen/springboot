@@ -8,6 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.kamfu.WebApiApplication;
+import com.kamfu.entity.User;
 import com.kamfu.service.KlockService;
 import com.kamfu.util.Md5Util;
 
@@ -27,16 +28,24 @@ public class ServiceTest {
 	@Test
 	public void test() {
 		try {
+			User user1=new User();user1.setId(1L);
+			User user2=new User();user2.setId(1L);
+			User user3=new User();user3.setId(2L);
 			SyncThread syncThread1 = new SyncThread();
-			syncThread1.setKlockService(klockService);
+			syncThread1.setKlockService(klockService,user1);
 			
 			SyncThread syncThread2 = new SyncThread();
-			syncThread2.setKlockService(klockService);
+			syncThread2.setKlockService(klockService,user2);
+			
+			SyncThread syncThread3 = new SyncThread();
+			syncThread3.setKlockService(klockService,user3);
 			Thread thread1 = new Thread(syncThread1, "SyncThread1");
 			Thread thread2 = new Thread(syncThread2, "SyncThread2");
+			Thread thread3 = new Thread(syncThread3, "SyncThread3");
 			thread1.start();
 			thread2.start();
-			Thread.sleep(10000000);
+			thread3.start();
+			Thread.sleep(1000000);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

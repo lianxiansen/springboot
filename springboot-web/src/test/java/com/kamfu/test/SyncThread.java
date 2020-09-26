@@ -2,22 +2,24 @@ package com.kamfu.test;
 
 import org.springframework.boot.autoconfigure.klock.annotation.Klock;
 
+import com.kamfu.entity.User;
 import com.kamfu.service.KlockService;
 
 public class SyncThread implements Runnable{
 	private KlockService klockService;
-	
+	private User user;
 	 public KlockService getKlockService() {
 		return klockService;
 	}
 
-	public void setKlockService(KlockService klockService) {
+	public void setKlockService(KlockService klockService,User user) {
 		this.klockService = klockService;
+		this.user=user;
 	}
 
 	public void run() {
 		try {
-			klockService.test();
+			klockService.test(user);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
