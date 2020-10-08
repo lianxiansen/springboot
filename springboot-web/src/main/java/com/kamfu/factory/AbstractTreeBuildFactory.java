@@ -33,7 +33,7 @@ public abstract class AbstractTreeBuildFactory<T> {
      */
     public List<T> doTreeBuild(List<T> nodes) {
 
-        //鏋勫缓涔嬪墠鐨勮妭鐐瑰鐞嗗伐浣�
+        //鏋勫缓涔嬪墠鐨勮妭鐐瑰鐞嗗伐浣
         List<T> readyToBuild = beforeBuild(nodes);
 
         //鍏蜂綋鏋勫缓鐨勮繃绋�
