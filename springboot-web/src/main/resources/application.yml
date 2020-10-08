@@ -9,13 +9,6 @@ sys-config:
 server:
   port: 8001
   max-http-header-size: 10240
-eureka:
-  client:
-    service-url:
-      defaultZone: http://eureka1:7001/eureka/,http://eureka2:7002/eureka/
-  instance:
-    instance-id: springboot-web-8001
-    prefer-ip-address:  true
 info:
   app.name: springboot-web
   company.name: kamfu
@@ -81,11 +74,6 @@ spring:
         implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl #指定jpa的自动表生成策略，驼峰自动映射为下划线格式
         #physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl    
 #spring.klock.address 和 spring.klock.cluster-server.node-addresses 选其一即可        
-  klock:
-    address: 127.0.0.1:6379
-    database: 15
-    waitTime: 60
-    leaseTime: 60
 #mybatis   
 #mybatis:
 #  type-aliases-package: com.kamfu.entity
