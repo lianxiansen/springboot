@@ -17,18 +17,25 @@ import org.apache.shiro.util.ByteSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 
-import com.alibaba.fastjson.JSONObject;
 import com.kamfu.entity.Permission;
 import com.kamfu.entity.Role;
 import com.kamfu.entity.User;
+import com.kamfu.mapper.PermissionMapper;
+import com.kamfu.mapper.RoleMapper;
 import com.kamfu.model.dto.UserInfo;
-import com.kamfu.service.WebApiService;
+import com.kamfu.service.RoleService;
+import com.kamfu.service.UserService;
 
 public class ShiroRealm extends AuthorizingRealm
 {
 	@Autowired
-	WebApiService webApiService;
-
+	UserService userService;
+	@Autowired
+	RoleService roleService;
+	@Autowired
+	RoleMapper roleMapper;
+	@Autowired
+	PermissionMapper permissionMapper;
     @Autowired
     private  RedisTemplate<String,  String>  redisTemplate;
     @Override
@@ -79,14 +86,14 @@ public class ShiroRealm extends AuthorizingRealm
         {
             return null;
         }
- 
+        
         //获取用户信息
-        User user =webApiService.getUserByUsername(username);// userService.getByUsername(username);
+        User user= userService.getByUsername(username);
         if (user != null)
         {
-            Role role=webApiService.getRoleById(user.getRoleId());
+        	Role role=roleMapper.selectById(user.getRoleId());
             if(null!=role) {
-            	List<Permission> permissions=webApiService.selectPermissionList(role.getId()) ;//permissionMapper.selectListByRoleId(role.getId());
+            	List<Permission> permissions=permissionMapper.selectListByRoleId(role.getId());
             	 UserInfo userInfo=new UserInfo()
             			 .setUserId(user.getId())
             			 .setDeptId(user.getDeptId())

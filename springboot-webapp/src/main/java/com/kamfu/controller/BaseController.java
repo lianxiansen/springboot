@@ -15,14 +15,19 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.shiro.SecurityUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 
-import com.kamfu.entity.User;
+import com.kamfu.mapper.RoleMapper;
 import com.kamfu.model.dto.UserInfo;
+import com.kamfu.service.DeptService;
+import com.kamfu.service.PermissionService;
+import com.kamfu.service.RoleService;
+import com.kamfu.service.UserService;
 import com.kamfu.util.HttpContext;
 
 /**
@@ -35,9 +40,16 @@ public class BaseController {
 	protected int pagesize=20;
     protected final String REDIRECT = "redirect:";
     protected final String FORWARD = "forward:";
-    
-
-    
+    @Autowired
+    protected DeptService deptService;
+    @Autowired
+    protected  PermissionService permissionService;
+    @Autowired
+    protected RoleService roleService;
+    @Autowired
+    protected  RoleMapper roleMapper;
+    @Autowired
+    protected UserService userService;
     protected HttpServletRequest getHttpServletRequest() {
         return HttpContext.getRequest();
     }

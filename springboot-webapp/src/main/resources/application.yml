@@ -6,19 +6,18 @@ sys-config:
   pics-url-prefix: https://show.xncoding.net/pics/ # 图片访问URL前缀
   posapi-url-prefix: http://127.0.0.1:9095
   muti-datasource-open: true #是否开启多数据源(true/false) 
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: hystrix.stream
-eureka:
-  client:
-    service-url:
-      defaultZone: http://eureka1:7001/eureka/,http://eureka2:7002/eureka/
-feign:
-  hystrix:
-    enabled: true  
+#mybatis-plus配置     
+mybatis-plus:
+  mapper-locations: classpath*:/com/kamfu/mapper/mysql/*Mapper.xml
+  type-aliases-package: com.kamfu.base.entity
+  global-config:
+    id-type: 0 #0:数据库ID自增   1:用户输入id  2:全局唯一id(IdWorker)  3:全局唯一ID(uuid)
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: true #配置的缓存的全局开关
+    lazyLoadingEnabled: true #延时加载的开关
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    multipleResultSetsEnabled: false #开启的话，延时加载一个属性时会加载该对象全部属性，否则按需加载属性
 spring:
   application:
     name: springboot-webapp
@@ -40,14 +39,6 @@ spring:
 #激活local配置文件      
   profiles:
     active: local
-          
-
-
-
-
-
-
-
 #日志
 logging:
   config: classpath:log4j2.xml     

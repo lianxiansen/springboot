@@ -14,7 +14,6 @@ import com.kamfu.entity.Role;
 import com.kamfu.model.BaseResponse;
 import com.kamfu.model.PagedList;
 import com.kamfu.model.PagedResponse;
-import com.kamfu.service.WebApiService;
 
 import lombok.extern.log4j.Log4j2;
 
@@ -27,13 +26,10 @@ public class RoleController extends BaseController{
     public String index() {
         return PREFIX + "role.html";
     }
-    
-	@Autowired
-	private WebApiService webApiService;
     @RequestMapping(value = "/pagedList")
     @ResponseBody
     public BaseResponse pagedList(int page,int limit) {
-    	 PagedList<Role> pagedList=webApiService.selectRolePagedList(page, limit);
+    	 PagedList<Role> pagedList=roleService.selectPagedList(page, pagesize);
     	 return PagedResponse.success("成功",pagedList.getData(),pagedList.getCount());
     }
     
@@ -47,12 +43,18 @@ public class RoleController extends BaseController{
     	role.setCreateUser(getUser().getUserId());
     	role.setUpdateTime(new Date());
     	role.setUpdateUser(getUser().getUserId());
-    	return webApiService.addRole(role);
+		int i=roleMapper.insert(role);
+		if(i>0) {
+			return BaseResponse.success();
+		}
+		else {
+			return BaseResponse.fail();
+		}
     }
     @RequestMapping(value = "/addPermissions")
     @ResponseBody
     public BaseResponse addPermissions(Long roleId,String permissionIds) {
-
-    	return webApiService.addPermissions(roleId, permissionIds);
+		roleService.addPermissions(roleId, permissionIds);
+		return BaseResponse.success();
     }
 }

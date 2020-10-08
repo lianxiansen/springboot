@@ -5,8 +5,7 @@ import lombok.experimental.Accessors;
 
 @Data
 @Accessors(chain  = true)
-public class UserParam {
+public class PermissionParam {
 	private Integer start;
-	private Integer limit;
-	private Long deptId;
+	private Integer end;
 }

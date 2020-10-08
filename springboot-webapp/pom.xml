@@ -57,33 +57,30 @@
 		</dependency>
 
 		<!-- 整合mybatis -->
-		<!-- <dependency> -->
-		<!-- <groupId>org.mybatis.spring.boot</groupId> -->
-		<!-- <artifactId>mybatis-spring-boot-starter</artifactId> -->
-		<!-- </dependency> -->
+		<dependency>
+		<groupId>org.mybatis.spring.boot</groupId>
+		<artifactId>mybatis-spring-boot-starter</artifactId>
+		</dependency>
 
-		<!-- <dependency> -->
-		<!-- <groupId>com.alibaba</groupId> -->
-		<!-- <artifactId>druid</artifactId> -->
-		<!-- <version>${druid.version}</version> -->
-		<!-- </dependency> -->
-		<!-- 整合mybatisplus -->
-		<!-- <dependency> -->
-		<!-- <groupId>com.baomidou</groupId> -->
-		<!-- <artifactId>mybatis-plus</artifactId> -->
-		<!-- <version>${mybatis-plus.version}</version> -->
-		<!-- </dependency> -->
-		<!-- <dependency> -->
-		<!-- <groupId>com.baomidou</groupId> -->
-		<!-- <artifactId>mybatisplus-spring-boot-starter</artifactId> -->
-		<!-- <version>${mybatisplus-spring-boot-starter.version}</version> -->
-		<!-- </dependency> -->
-
-		<!-- 数据库驱动 -->
-		<!-- <dependency> -->
-		<!-- <groupId>mysql</groupId> -->
-		<!-- <artifactId>mysql-connector-java</artifactId> -->
-		<!-- </dependency> -->
+		<dependency>
+		<groupId>com.alibaba</groupId>
+		<artifactId>druid</artifactId>
+		<version>${druid.version}</version>
+		</dependency>
+		<dependency>
+		<groupId>com.baomidou</groupId>
+		<artifactId>mybatis-plus</artifactId>
+		<version>${mybatis-plus.version}</version>
+		</dependency>
+		<dependency>
+		<groupId>com.baomidou</groupId>
+		<artifactId>mybatisplus-spring-boot-starter</artifactId>
+		<version>${mybatisplus-spring-boot-starter.version}</version>
+		</dependency>
+		<dependency>
+		<groupId>mysql</groupId>
+		<artifactId>mysql-connector-java</artifactId>
+		</dependency>
 
 		<dependency>
 			<groupId>org.hamcrest</groupId>
@@ -154,11 +151,11 @@
 			<artifactId>httpclient</artifactId>
 		</dependency>
 		<!-- JWT接口权限认证 -->
-		<dependency>
-			<groupId>com.auth0</groupId>
-			<artifactId>java-jwt</artifactId>
-			<version>3.4.0</version>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>com.auth0</groupId> -->
+<!-- 			<artifactId>java-jwt</artifactId> -->
+<!-- 			<version>3.4.0</version> -->
+<!-- 		</dependency> -->
 
 		<dependency>
 			<groupId>org.apache.commons</groupId>
@@ -175,10 +172,10 @@
 			<artifactId>springfox-swagger-ui</artifactId>
 		</dependency>
 
-		<dependency>
-			<groupId>com.auth0</groupId>
-			<artifactId>java-jwt</artifactId>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>com.auth0</groupId> -->
+<!-- 			<artifactId>java-jwt</artifactId> -->
+<!-- 		</dependency> -->
 
 		<!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
 		<dependency>
@@ -191,22 +188,22 @@
 			<artifactId>spring-boot-devtools</artifactId>
 			<scope>runtime</scope>
 		</dependency>
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-openfeign</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-actuator</artifactId>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.springframework.cloud</groupId> -->
+<!-- 			<artifactId>spring-cloud-starter-openfeign</artifactId> -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.springframework.cloud</groupId> -->
+<!-- 			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId> -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.springframework.cloud</groupId> -->
+<!-- 			<artifactId>spring-cloud-starter-netflix-hystrix</artifactId> -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.springframework.boot</groupId> -->
+<!-- 			<artifactId>spring-boot-starter-actuator</artifactId> -->
+<!-- 		</dependency> -->
 		
 		<dependency>
 		    <groupId>org.springframework.boot</groupId>

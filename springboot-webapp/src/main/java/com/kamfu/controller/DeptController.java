@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.kamfu.entity.Dept;
 import com.kamfu.model.BaseResponse;
 import com.kamfu.model.LayuiTreeNode;
-import com.kamfu.service.WebApiService;
 
 import lombok.extern.log4j.Log4j2;
 
@@ -20,8 +19,6 @@ import lombok.extern.log4j.Log4j2;
 @RequestMapping("/dept")
 public class DeptController extends BaseController{
 	private String PREFIX = "system/";
-	@Autowired
-	private WebApiService webApiService;
     @RequestMapping("index")
     public String index() {
         return PREFIX + "dept.html";
@@ -33,18 +30,18 @@ public class DeptController extends BaseController{
     }
     
     
-    @RequestMapping(value = "/layuiTree")
-    @ResponseBody
-    public List<LayuiTreeNode> layuiTree() {
-
-    	return webApiService.layuiTree(getUser().getDeptId());
-    }
+//    @RequestMapping(value = "/layuiTree")
+//    @ResponseBody
+//    public List<LayuiTreeNode> layuiTree() {
+//
+//    	return webApiService.layuiTree(getUser().getDeptId());
+//    }
     
     @RequestMapping(value = "/selectList")
     @ResponseBody
     public BaseResponse selectList() {
-
-    	return webApiService.selectDeptList(getUser().getDeptId());
+		List<Dept> list= deptService.selectList(getUser().getDeptId());
+		return BaseResponse.success("查询成功", list);
     }
     
     @RequestMapping(value = "/add")
@@ -54,6 +51,12 @@ public class DeptController extends BaseController{
     	dept.setCreateUser(getUser().getUserId());
     	dept.setUpdateTime(new Date());
     	dept.setUpdateUser(getUser().getUserId());
-    	return webApiService.addDept(dept);
+		try {
+			deptService.add(dept);
+			return BaseResponse.success(); 
+		} catch (Exception e) {
+			return BaseResponse.fail(e.getMessage());
+		}
+		
     }
 }

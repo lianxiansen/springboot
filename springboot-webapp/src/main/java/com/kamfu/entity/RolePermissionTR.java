@@ -1,6 +1,13 @@
 package com.kamfu.entity;
 
 import java.io.Serializable;
+import java.util.Date;
+
+import com.baomidou.mybatisplus.annotations.TableName;
+
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.experimental.Accessors;
 
 /**
  * @ClassName: RoleMenuTR
@@ -9,7 +16,10 @@ import java.io.Serializable;
  * @date 2020年6月30日
  *
  */
-    
+@NoArgsConstructor
+@Data
+@Accessors(chain=true)
+@TableName(value = "role_permission_tr")
 public class RolePermissionTR implements Serializable {
 
     private static final long serialVersionUID = 1L;

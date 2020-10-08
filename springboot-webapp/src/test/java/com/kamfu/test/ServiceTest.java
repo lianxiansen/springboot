@@ -10,7 +10,6 @@ import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.kamfu.WebAppApplication;
-import com.kamfu.service.WebApiService;
 import com.kamfu.util.Md5Util;
 
 
@@ -27,10 +26,6 @@ public class ServiceTest {
 	 */
 	@LocalServerPort
 	private int port;
-
-	@Resource
-	private WebApiService userService;
-
 
 	@Test
 	public void md5() {
