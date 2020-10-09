@@ -7,8 +7,8 @@ import org.apache.ibatis.annotations.Param;
 
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 import com.kamfu.entity.Role;
-import com.kamfu.model.RoleParam;
-import com.kamfu.model.UserParam;
+import com.kamfu.model.param.RoleParam;
+import com.kamfu.model.param.UserParam;
 
 /**
  * <p>

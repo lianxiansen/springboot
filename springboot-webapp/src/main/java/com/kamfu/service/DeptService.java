@@ -25,9 +25,6 @@ public class DeptService {
     public List<Dept> selectList(Long deptId) {
     	return deptMapper.selectList(deptId);
     }
-    public List<LayuiTreeNode> layuiTree(Long deptId){
-    	return deptMapper.layuiTree(deptId);
-    }
     public void add(Dept dept) throws Exception {
     	if(null!=dept.getPid()&&dept.getPid()>0) {
     		Dept parentDept=deptMapper.selectById(dept.getPid());

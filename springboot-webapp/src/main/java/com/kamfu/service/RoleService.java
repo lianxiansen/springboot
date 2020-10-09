@@ -14,7 +14,7 @@ import com.kamfu.entity.RolePermissionTR;
 import com.kamfu.mapper.RoleMapper;
 import com.kamfu.mapper.RolePermissionMapper;
 import com.kamfu.model.PagedList;
-import com.kamfu.model.RoleParam;
+import com.kamfu.model.param.RoleParam;
 import com.kamfu.util.StringUtil;
 
 
@@ -26,8 +26,9 @@ public class RoleService {
     private RoleMapper roleMapper;
     @Autowired
     private RolePermissionMapper rolePermissionMapper;
-    public PagedList<Role> selectPagedList(int page,int pagesize) {
+    public PagedList<Role> selectPagedList(Long deptId,int page,int pagesize) {
     	RoleParam param=new RoleParam()
+    			.setDeptId(deptId)
     			.setStart((page-1)*pagesize)
     			.setLimit(pagesize);
     	List<Role> list= roleMapper.selectPagedList(param);

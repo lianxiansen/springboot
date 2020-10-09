@@ -8,17 +8,13 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.kamfu.entity.Dept;
 import com.kamfu.entity.Permission;
 import com.kamfu.entity.Role;
 import com.kamfu.entity.RolePermissionTR;
-import com.kamfu.entity.User;
 import com.kamfu.mapper.PermissionMapper;
 import com.kamfu.mapper.RoleMapper;
 import com.kamfu.mapper.RolePermissionMapper;
 import com.kamfu.model.PermissionInfo;
-import com.kamfu.util.Md5Util;
-import com.kamfu.util.StringUtil;
 
 
 

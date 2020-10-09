@@ -3,13 +3,14 @@ package com.kamfu.config;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
-
 /**
- * 本项目自定义配置
+ * @ClassName: SysConfig
+ * @Description: 系统配置
+ * @author liandy
+ * @date 2020年10月9日
  *
- * @author xiongneng
- * @since 2018/01/06 21:09
  */
+    
 @Component
 @ConfigurationProperties(prefix = "sys-config")
 public class SysConfig {

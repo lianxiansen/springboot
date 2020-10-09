@@ -24,17 +24,21 @@
     </sql>
 
 
-    <select id="selectPagedList" resultMap="BaseResultMap" parameterType="com.kamfu.model.RoleParam" >
+    <select id="selectPagedList" resultMap="BaseResultMap" parameterType="com.kamfu.model.param.RoleParam" >
         select
         <include refid="BaseColumn"/> 
         from role where 1=1
-
+		 <if test="param.deptId != null and param.deptId != ''">
+		 and dept_id=#{param.deptId}
+         </if>            
         limit #{param.start},#{param.limit}
     </select>
-    <select id="selectCount" resultType="java.lang.Integer" parameterType="com.kamfu.model.RoleParam" >
+    <select id="selectCount" resultType="java.lang.Integer" parameterType="com.kamfu.model.param.RoleParam" >
         select
         count(0)
         from role where 1=1
-
+		 <if test="param.deptId != null and param.deptId != ''">
+		 and dept_id=#{param.deptId}
+         </if>   
     </select>
 </mapper>

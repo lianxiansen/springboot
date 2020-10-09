@@ -1,11 +1,12 @@
-package com.kamfu.model;
+package com.kamfu.model.param;
 
 import lombok.Data;
 import lombok.experimental.Accessors;
 
 @Data
 @Accessors(chain  = true)
-public class PermissionParam {
+public class RoleParam {
 	private Integer start;
-	private Integer end;
+	private Integer limit;
+	private Long deptId;
 }

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import com.kamfu.entity.User;
 import com.kamfu.mapper.UserMapper;
 import com.kamfu.model.PagedList;
-import com.kamfu.model.UserParam;
+import com.kamfu.model.param.UserParam;
 import com.kamfu.util.Md5Util;
 import com.kamfu.util.StringUtil;
 

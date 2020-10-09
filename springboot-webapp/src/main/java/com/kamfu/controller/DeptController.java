@@ -3,14 +3,12 @@ package com.kamfu.controller;
 import java.util.Date;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kamfu.entity.Dept;
 import com.kamfu.model.BaseResponse;
-import com.kamfu.model.LayuiTreeNode;
 
 import lombok.extern.log4j.Log4j2;
 
@@ -28,14 +26,6 @@ public class DeptController extends BaseController{
     public String deptAdd() {
         return PREFIX + "dept_add.html";
     }
-    
-    
-//    @RequestMapping(value = "/layuiTree")
-//    @ResponseBody
-//    public List<LayuiTreeNode> layuiTree() {
-//
-//    	return webApiService.layuiTree(getUser().getDeptId());
-//    }
     
     @RequestMapping(value = "/selectList")
     @ResponseBody

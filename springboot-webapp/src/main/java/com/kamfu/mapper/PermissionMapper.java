@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.Param;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 import com.kamfu.entity.Permission;
 import com.kamfu.model.LayuiTreeNode;
-import com.kamfu.model.PermissionParam;
+import com.kamfu.model.param.PermissionParam;
 
 /**
  * <p>
