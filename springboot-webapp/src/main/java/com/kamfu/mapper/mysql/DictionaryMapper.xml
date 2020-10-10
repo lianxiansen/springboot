@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kamfu.mapper.DictionaryMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.kamfu.entity.Dictionary">
+        <id column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="code" property="code" />
+        <result column="sort" property="sort" />
+        <result column="dictionary_class_id" property="dictionaryClassId" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="BaseColumn">
+      *
+    </sql>
+
+<!--     <select id="layuiTree" resultType="cn.stylefeng.guns.base.pojo.node.LayuiTreeNode"> -->
+<!-- 		select dept_id AS id, pid as "pid", simple_name as title, -->
+<!-- 		( -->
+<!-- 		CASE -->
+<!-- 		WHEN (pid = 0 OR pid IS NULL) THEN -->
+<!-- 		'true' -->
+<!-- 		ELSE -->
+<!-- 		'false' -->
+<!-- 		END -->
+<!-- 		) as "spread" from sys_dept  -->
+<!-- 		where 1=1 -->
+<!--         <if test="deptId != null and deptId != ''"> -->
+<!--             and (pids LIKE CONCAT('%$[',#{deptId},'$]%') escape '$' or dept_id=#{deptId})             -->
+<!--         </if>	  -->
+		
+<!-- 	</select> -->
+
+<!--     <select id="tree" resultType="cn.stylefeng.guns.base.pojo.node.ZTreeNode"> -->
+<!-- 		select dept_id AS id, pid as "pId", simple_name as name, -->
+<!-- 		( -->
+<!-- 		CASE -->
+<!-- 		WHEN (pid = 0 OR pid IS NULL) THEN -->
+<!-- 		'true' -->
+<!-- 		ELSE -->
+<!-- 		'false' -->
+<!-- 		END -->
+<!-- 		) as "open" from sys_dept -->
+<!-- 		where 1=1 -->
+<!--         <if test="deptId != null and deptId != ''"> -->
+<!--             and (pids LIKE CONCAT('%$[',#{deptId},'$]%') escape '$' or dept_id=#{deptId})             -->
+<!--         </if>			 -->
+<!-- 	</select> -->
+
+<!--     <select id="list" resultType="map"> -->
+<!--         select -->
+<!--         <include refid="Base_Column_List"/> -->
+<!--         from sys_dept where 1 = 1 -->
+<!--         <if test="condition != null and condition != ''"> -->
+<!--             and simple_name like CONCAT('%',#{condition},'%') or full_name like CONCAT('%',#{condition},'%') -->
+<!--         </if> -->
+<!--         <if test="deptId != null and deptId != ''"> -->
+<!--             and (dept_id = #{deptId} or dept_id in ( select dept_id from sys_dept where pids like CONCAT('%$[', #{deptId}, '$]%') escape '$' )) -->
+<!--         </if> -->
+<!--         order by sort ASC -->
+<!--     </select> -->
+
+    <select id="selectPagedList" resultMap="BaseResultMap" parameterType="com.kamfu.model.param.DictionaryParam" >
+        select
+        <include refid="BaseColumn"/> 
+        from dictionary where 1=1
+        and dictionary_class_id=#{param.dictionaryClassId}
+        limit #{param.start},#{param.limit}
+    </select>
+
+
+    <select id="selectCount" resultType="java.lang.Integer" parameterType="com.kamfu.model.param.DictionaryParam" >
+        select
+       	count(0)
+        from Dictionary where 1=1
+    and dictionary_class_id=#{param.dictionaryClassId}
+    </select>
+</mapper>
