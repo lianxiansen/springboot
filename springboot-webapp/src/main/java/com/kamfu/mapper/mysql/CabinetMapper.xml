@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kamfu.mapper.CabinetMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.kamfu.entity.Cabinet">
+        <id column="id" property="id" />
+        <result column="CabinetName" property="cabinetName" />
+        <result column="Addr" property="addr" />
+        <result column="beneficiary" property="beneficiary" />
+        <result column="QRCode" property="qrCode" />
+        <result column="OnlineData" property="onlineData" />
+        <result column="SmallChargeID" property="smallChargeID" />
+        <result column="LargeChargeID" property="largeChargeID" />
+        <result column="mediumChargeID" property="mediumChargeID" />
+        <result column="dept_id" property="deptId" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="BaseColumn">
+       *
+    </sql>
+    <select id="selectPagedList" resultMap="BaseResultMap" parameterType="com.kamfu.model.param.CabinetParam" >
+        select
+        <include refid="BaseColumn"/> 
+        from cabinet where 1=1
+        <if test="param.deptId != null and param.deptId != ''">
+        and dept_id in( select id from dept where id=#{param.deptId} or pids like CONCAT('%[', #{param.deptId}, ']%') )
+        </if>
+        limit #{param.start},#{param.limit}
+    </select>
+        <select id="selectCount" resultType="java.lang.Integer" parameterType="com.kamfu.model.CabinetParam" >
+        select
+       	count(0)
+        from cabinet where 1=1
+        <if test="param.deptId != null and param.deptId != ''">
+        and dept_id in( select id from dept where id=#{param.deptId} or pids like CONCAT('%[', #{param.deptId}, ']%') )
+        </if>
+    
+    </select>
+
+</mapper>
