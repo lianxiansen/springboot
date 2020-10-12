@@ -24,6 +24,7 @@ import org.springframework.http.ResponseEntity;
 
 import com.kamfu.mapper.RoleMapper;
 import com.kamfu.model.dto.UserInfo;
+import com.kamfu.service.BoxService;
 import com.kamfu.service.CabinetService;
 import com.kamfu.service.DeptService;
 import com.kamfu.service.DictionaryClassService;
@@ -53,6 +54,8 @@ public class BaseController {
     protected  RoleMapper roleMapper;
     @Autowired
     protected UserService userService;
+    @Autowired
+    protected BoxService boxService;
     @Autowired
     protected DictionaryClassService dictionaryClassService;
     @Autowired
