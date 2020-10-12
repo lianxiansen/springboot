@@ -29,7 +29,7 @@
         </if>
         limit #{param.start},#{param.limit}
     </select>
-        <select id="selectCount" resultType="java.lang.Integer" parameterType="com.kamfu.model.CabinetParam" >
+        <select id="selectCount" resultType="java.lang.Integer" parameterType="com.kamfu.model.param.CabinetParam" >
         select
        	count(0)
         from cabinet where 1=1
