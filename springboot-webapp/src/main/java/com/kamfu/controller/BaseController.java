@@ -26,6 +26,7 @@ import com.kamfu.mapper.RoleMapper;
 import com.kamfu.model.dto.UserInfo;
 import com.kamfu.service.BoxService;
 import com.kamfu.service.CabinetService;
+import com.kamfu.service.DeliverService;
 import com.kamfu.service.DeptService;
 import com.kamfu.service.DictionaryClassService;
 import com.kamfu.service.DictionaryService;
@@ -62,6 +63,8 @@ public class BaseController {
     protected DictionaryService dictionaryService;
     @Autowired
     protected CabinetService cabinetService;
+    @Autowired
+    protected DeliverService deliverService;
     protected HttpServletRequest getHttpServletRequest() {
         return HttpContext.getRequest();
     }

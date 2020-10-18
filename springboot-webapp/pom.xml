@@ -9,6 +9,7 @@
 		<artifactId>springboot</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
+	<packaging>war</packaging>
 	<groupId>com.kamfu</groupId>
 	<artifactId>springboot-webapp</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
