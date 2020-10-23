@@ -20,19 +20,16 @@ import com.kamfu.model.param.DeliverParam;
 public class DeliverService {
 
     @Resource
-    private DeliverMapper DeliverMapper;
+    private DeliverMapper deliverMapper;
 
     
-    public PagedList<Deliver> selectPagedList(int page,int pagesize) {
-    	DeliverParam param=new DeliverParam()
-    			.setStart((page-1)*pagesize)
-    			.setLimit(pagesize);
-    	List<Deliver> list= DeliverMapper.selectPagedList(param);
-    	int count=DeliverMapper.selectCount(param);
+    public PagedList<Deliver> selectPagedList(DeliverParam param) {    	
+    	List<Deliver> list= deliverMapper.selectPagedList(param);
+    	int count=deliverMapper.selectCount(param);
     	PagedList<Deliver> pagedList=new PagedList<Deliver>().setCount(count)
     			.setData(list)
-    			.setPage(page)
-    			.setPagesize(pagesize);
+    			.setPage(param.getPage())
+    			.setPagesize(param.getLimit());
     	return pagedList;
     }
     

@@ -8,4 +8,8 @@ import lombok.experimental.Accessors;
 public class DeliverParam {
 	private Integer start;
 	private Integer limit;
+	private Integer page;
+	private String addr;
+	private Integer packgeStatu;
+	private String pickupPhone;
 }

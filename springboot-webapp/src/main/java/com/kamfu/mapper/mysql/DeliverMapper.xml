@@ -81,6 +81,15 @@
 		select
 		<include refid="BaseColumn" />
 		from Deliver where 1=1
+		<if test="param.addr != null and param.addr != ''">
+		and addr like CONCAT('%',#{param.addr},'%')
+		</if>
+		<if test="param.packgeStatu != null and param.packgeStatu != ''">
+		and packgeStatu=#{param.packgeStatu}
+		</if>
+		<if test="param.pickupPhone != null and param.pickupPhone != ''">
+		and pickupPhone=#{param.pickupPhone}
+		</if>				
 		limit #{param.start},#{param.limit}
 	</select>
 
@@ -90,5 +99,14 @@
 		select
 		count(0)
 		from Deliver where 1=1
+		<if test="param.addr != null and param.addr != ''">
+		and addr like CONCAT('%',#{param.addr},'%')
+		</if>
+		<if test="param.packgeStatu != null and param.packgeStatu != ''">
+		and packgeStatu=#{param.packgeStatu}
+		</if>
+		<if test="param.pickupPhone != null and param.pickupPhone != ''">
+		and pickupPhone=#{param.pickupPhone}
+		</if>		
 	</select>
 </mapper>
